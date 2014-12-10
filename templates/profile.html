@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div>
+      <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Last Login: {% load humanize %}{{ user.last_login|naturaltime }} </p>
+    </div>
+
+    <hr class="featurette-divider">
+    <table class="table table-hover table-condensed" border="1">
+        <thead class="navbar-default">
+          <tr>
+          <th class="col-sm-1 job-bar-filter">resumes
+          </th>
+          </tr>
+        </thead>
+
+        <!--Body content-->
+        <tbody>
+          {% if object_list %}
+            {% for resume in object_list %}
+              <tr>
+                <td>
+                <div>
+                    <p class="col-sm-11">Resume: <strong>{{ resume.name }}</strong></p>
+                    <a href="{{ resume.id }}">
+                        <span class="glyphicon glyphicon-search"></span></a>
+                    <a href="update/{{ resume.id }}">
+                        <span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="delete/{{ resume.id }}">
+                        <span class="glyphicon glyphicon-remove"></span></a>
+                </div>
+                <div>
+                    <p class="col-sm-12">(Updated: {% load humanize %}{{ resume.timestamp_updated|naturaltime }})</p>
+                    <p class="col-sm-12">Proudest Accomplishment: {{ resume.accomplishment }}</p>
+                </div>
+
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <h4>No resumes entered yet</h4>
+          {% endif %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{% url 'resume-create' %}">Create resume</a>
+
+
+
+{% endblock %}

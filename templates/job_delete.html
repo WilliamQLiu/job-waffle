@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Job Delete
+{% endblock %}
+
+{% block content %}
+
+<h4>Delete Job?</h4>
+
+    <h3>{{ job.title }} at {{ job.company }} ({{ job.location }}) </h3>
+        <hr class="featurette-divider">
+        <h4>Salary ({{ job.salary_min }} - {{ job.salary_max }})
+        <h4>Description:</h4>
+        <p>{{ job.description }}</p>
+
+    <form method='POST' action="{% url "job-delete" pk=job.id %}">{% csrf_token %}
+
+    <input type="submit" value="Yes, Delete" class="btn btn-lg btn-danger">
+
+    </form><a href="{% url "job-all" %}">No, cancel.</a>
+
+
+{% endblock %}

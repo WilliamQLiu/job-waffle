@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Delete Advice?</h4>
+
+    <h3>{{ advice.name }} ({{ advice.title }})</h3>
+    <h5>Who are you, and what do you do?</h5>
+    <p>{{ advice.question1 }}</p>
+    <h5>What knowledge or tools do you use to do your job?</h5>
+    <p>{{ advice.question2 }}</p>
+    <h5>What do you like and dislike about your job?</h5>
+    <p>{{ advice.question3 }}</p>
+    <h5>What advice do you have for others looking to get into your field?</h5>
+    <p>{{ advice.question4 }}</p>
+
+    <form method='POST' action="{% url "advice-delete" username=user.username pk=advice.id %}">{% csrf_token %}
+
+    <input type="submit" value="Yes, Delete" class="btn btn-lg btn-danger">
+
+    </form><a href="{% url "base" %}">No, cancel.</a>
+
+{% endblock %}

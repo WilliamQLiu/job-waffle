@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if object_list %}
+  {% for advice in object_list %}
+    <h3>{{ advice.name }} ({{ advice.title }})</h3>
+    <h4>Who are you, and what do you do?</h4>
+    <p class="big">{{ advice.question1|safe|linebreaks }}</p>
+    <h4>What knowledge or tools do you use to do your job?</h4>
+    <p class="big">{{ advice.question2|safe|linebreaks }}</p>
+    <h4>What do you like and dislike about your job?</h4>
+    <p class="big">{{ advice.question3|safe|linebreaks }}</p>
+    <h4>What advice do you have for others looking to get into your field?</h4>
+    <p class="big">{{ advice.question4|safe|linebreaks }}</p>
+  {% endfor %}
+
+{% endif %}
+
+{% endblock %}

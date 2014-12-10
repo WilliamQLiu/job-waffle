@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if object_list %}
+  {% for advice in object_list %}
+    <div class="table-responsive">
+    <table class="table table-hover table-condensed" border="0">
+        <thead class="navbar-default">
+            <tr>
+                <th class="col-sm-2 job-bar-filter">Name (Title)</th>
+                <th class="col-sm-8 job-bar-filter">Who are you?</th>
+            </tr>
+        </thead>
+        {% for advice in object_list %}
+        <tbody>
+            <tr>
+                <td> {{ advice.name }} <br>({{ advice.title }}) </td>
+                <td> {{ advice.question1|safe|truncatewords:30 }} </td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    {% endfor %}
+    </table>
+    </div>
+  {% else %}
+    <h2>No advice entered yet</h2>
+  {% endif %}
+
+
+{% endblock %}

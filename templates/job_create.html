@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Post Job</h4>
+  <hr class="featurette-divider">
+    <form method='POST' action='' enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!--{{ form.as_p }}-->
+
+        <!--
+        <div>
+            <p><label for="id_company">Company Name</label></p>
+            <input id="id_company" type="text" name="company" size="60"/>
+        </div>
+        <br>
+        <div>
+            <p><label for="id_title">Job Title</label></p>
+            <input id="id_title" type="text" name="title" size="60"/>
+        </div>
+        <br>
+        <div>
+            <label for="id_title">Job Description</label>
+            <div class="tip">Describe the responsibilities of the job</div>
+            <textarea id="id_description" type="text" name="title" rows="4" cols="60"></textarea>
+        </div>
+        <br>
+        <div>
+            <p><label for="id_status">Job Status</label></p>
+            <input id="id_status" type="text" name="status" size="60"/>
+        <br>-->
+
+        <br>
+
+    <input type="submit" value="Submit" class="btn btn-lg btn-danger">
+    </form>
+
+{% endblock %}

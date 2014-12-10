@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Home Page</h1>
+
+<h1>Connect</h1>
+{% for provider in backends.not_associated %}
+<li>
+    <a href="{% url 'social:begin' provider %}">{{ provider }}</a>
+</li>
+{% endfor %}
+
+
+{% endblock %}

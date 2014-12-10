@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Job View
+{% endblock %}
+
+{% block content %}
+
+
+{% if object_list %}
+    {% for job in object_list %}
+        <h3>{{ job.title }} at {{ job.company }} ({{ job.location }}) </h3>
+        <hr class="featurette-divider">
+        <h4>Salary ({{ job.salary_min }} - {{ job.salary_max }})
+        <h4>Description:</h4>
+        <p>{{ job.description }}</p>
+
+    {% endfor %}
+{% else %}
+    <h2>No job listed here</h2>
+{% endif %}
+
+{% endblock %}

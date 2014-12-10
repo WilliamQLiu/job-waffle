@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Delete Resume?</h4>
+
+    <h4>Resume: {{ resume.name }} </h4>
+    <hr class="featurette-divider">
+    <h4>Name: {{ user.first_name }} {{ user.last_name }} </h4>
+    <h4>Location: {{ resume.location }}</h4>
+    <h4>Phone Number: {{ resume.phone_number }}</h4>
+    <h4>Accomplishment: {{ resume.accomplishment }}</h4>
+
+    <form method='POST' action="{% url "resume-delete" username=user.username pk=resume.id %}">{% csrf_token %}
+
+    <input type="submit" value="Yes, Delete" class="btn btn-lg btn-danger">
+
+    </form><a href="{% url "profile" username=user.username %}">No, cancel.</a>
+
+{% endblock %}
