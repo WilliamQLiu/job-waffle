@@ -53,12 +53,18 @@ docs/_build/
 # PyBuilder
 target/
 
+# Mac
+*.DS_Store
+
+# Editor Specific
+*.sublime-project
+*.sublime-workspace
+
+# Project Specific
+*.secret.py
 static/.DS_Store
-
 static/css/.DS_Store
-
 static/js/.DS_Store
 
-.DS_Store
 
 jobwaffle/secret.py
