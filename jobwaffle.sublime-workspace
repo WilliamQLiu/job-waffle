@@ -124,10 +124,18 @@
 	"buffers":
 	[
 		{
-			"file": "jobwaffle/settings.py",
+			"file": "jobwaffle/settings/base.py",
 			"settings":
 			{
-				"buffer_size": 7424,
+				"buffer_size": 5100,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "jobwaffle/settings/production.py",
+			"settings":
+			{
+				"buffer_size": 3100,
 				"line_ending": "Unix"
 			}
 		},
@@ -135,23 +143,15 @@
 			"file": "templates/base.html",
 			"settings":
 			{
-				"buffer_size": 4211,
+				"buffer_size": 4327,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "jobwaffle/urls.py",
+			"file": "templates/accounts/login.html",
 			"settings":
 			{
-				"buffer_size": 2541,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 414,
+				"buffer_size": 1373,
 				"line_ending": "Unix"
 			}
 		}
@@ -159,9 +159,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 375.0,
+		"height": 49.0,
 		"selected_items":
 		[
+			[
+				"Package Control: remove pack",
+				"Package Control: Remove Package"
+			],
 			[
 				"task",
 				"Tasks: New document"
@@ -211,7 +215,7 @@
 				"Package Control: Remove Package"
 			]
 		],
-		"width": 588.0
+		"width": 435.0
 	},
 	"console":
 	{
@@ -237,26 +241,37 @@
 	"expanded_folders":
 	[
 		"/Users/williamliu/GitHub/job-waffle",
-		"/Users/williamliu/GitHub/job-waffle/applicant",
-		"/Users/williamliu/GitHub/job-waffle/employer",
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle",
-		"/Users/williamliu/GitHub/job-waffle/templates",
-		"/Users/williamliu/GitHub/job-waffle/templates/accounts"
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings",
+		"/Users/williamliu/GitHub/job-waffle/templates"
 	],
 	"file_history":
 	[
-		"/Users/williamliu/Downloads/client_secret_413124145982-c0rai9kn2gdoe9bm7kl18qmjca0spaqr.apps.googleusercontent.com.json",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/dev_will.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/production.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/secret.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/urls.py",
+		"/Users/williamliu/GitHub/job-waffle/.travis.yml",
+		"/Users/williamliu/GitHub/job-waffle/requirements.txt",
+		"/Users/williamliu/GitHub/python-examples/elasticsearch/simple_search.py",
+		"/Users/williamliu/.bash_profile",
+		"/Users/williamliu/.oh-my-zsh",
+		"/Users/williamliu/.zshrc",
+		"/usr/local/var/postgres/pg_hba.conf",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/old_settings.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/staging.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/__init__.py",
 		"/Users/williamliu/GitHub/job-waffle/templates/base.html",
+		"/Users/williamliu/GitHub/job-waffle/README.md",
+		"/Users/williamliu/Downloads/client_secret_413124145982-c0rai9kn2gdoe9bm7kl18qmjca0spaqr.apps.googleusercontent.com.json",
 		"/Users/williamliu/GitHub/job-waffle/applicant/views.py",
 		"/Users/williamliu/GitHub/job-waffle/employer/views.py",
 		"/Users/williamliu/GitHub/job-waffle/templates/socialdone.html",
-		"/Users/williamliu/GitHub/job-waffle/requirements.txt",
 		"/Users/williamliu/GitHub/job-waffle/applicant/tasks.py",
-		"/Users/williamliu/GitHub/job-waffle/jobwaffle/urls.py",
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle/secret.py",
 		"/Users/williamliu/GitHub/job-waffle/employer/tasks.py",
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle/celery.py",
-		"/Users/williamliu/.bash_profile",
 		"/Users/williamliu/GitHub/job-waffle/static/css/bootstrap.min.css",
 		"/Users/williamliu/GitHub/job-waffle/development.yml",
 		"/Users/williamliu/GitHub/job-waffle/.gitignore",
@@ -359,20 +374,7 @@
 		"/Users/williamliu/GitHub/MHADjango/datasite/config/sample_long.sh",
 		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/local_settings.py",
 		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/settings/__init__.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/email_info.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/ddh/__init__.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/settings/base.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/settings/local.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/templates/program_update.html",
-		"/Users/williamliu/GitHub/MHADjango/datasite/timesheets/forms.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/settings/settings.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/__init__.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/settings/production.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/timesheets/celery.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/templates/program_delete.html",
-		"/Users/williamliu/GitHub/MHADjango/datasite/static/css/jumbotron.css",
-		"/Users/williamliu/GitHub/MHADjango/.gitignore",
-		"/Users/williamliu/GitHub/MHADjango/static/css/jumbotron.css"
+		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/email_info.py"
 	],
 	"find":
 	{
@@ -395,6 +397,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"social",
+			"trans",
+			"base.html",
+			"installed",
+			"Authentication",
+			"static",
+			"secret_key",
+			"SECRET_KEY",
 			"registration_register",
 			"login",
 			"celery",
@@ -532,59 +542,92 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "jobwaffle/settings.py",
+					"file": "jobwaffle/settings/base.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7424,
+						"buffer_size": 5100,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2769,
-								2769
+								1332,
+								1332
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"auto_complete": false,
+							"open_with_edit": true,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 786.0,
+						"translation.y": 355.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "templates/base.html",
+					"file": "jobwaffle/settings/production.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4211,
+						"buffer_size": 3100,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								495,
-								495
+								861,
+								861
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 775.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "templates/base.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4327,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								515,
+								515
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -596,61 +639,33 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "jobwaffle/urls.py",
+					"buffer": 3,
+					"file": "templates/accounts/login.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2541,
+						"buffer_size": 1373,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								786,
-								786
+								156,
+								156
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 432.0,
+						"translation.y": 5.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "README.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 414,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								231,
-								231
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -698,6 +713,10 @@
 	"output.find_results":
 	{
 		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 102.0
 	},
 	"output.sftp":
 	{

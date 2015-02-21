@@ -14,8 +14,9 @@
 
   <body>
 
-  {% load socialaccount %}
-  {% providers_media_js %}
+    <!-- Login for Social Media accounts (e.g. Facebook, Google+, Twitter)-->
+    {% load socialaccount %}
+    {% providers_media_js %}
 
     <div class="navbar navbar-default navbar-static-top" role="navigation">
 
@@ -49,7 +50,7 @@
 
             {% else %}
                 <a class="navbar-brand" href="/accounts/login">Log In</a>
-                <a class="navbar-brand" href="">Sign Up</a>
+                <a class="navbar-brand" href="/accounts/signup">Sign Up</a>
             {% endif %}
 
           </ul>
@@ -115,15 +116,7 @@
       -->
         <!-- Footer -->
 
-
-
     </div>
-
-
-
-
-
-
 
   </body>
 </html>
