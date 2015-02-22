@@ -1018,32 +1018,48 @@ body .markdown-body
 <p><strong>Goal</strong></p>
 <p><a href="https://www.jobwaffle.com">Jobwaffle</a> will help you find a job you&rsquo;re interested and passionate about.  Using machine learning, we&rsquo;ll match employees and employers.</p>
 <p><img alt="Prototype" src="https://github.com/WilliamQLiu/job-waffle/blob/master/docs/search.png" title="Prototype" /></p>
-<p><strong>Setup</strong><br />
-Jobwaffle is open source.  There&rsquo;s a lot of technical setup so stick with the installation steps below.  The site is currently hosted on a free heroku tier so it&rsquo;ll probably run really slow on live.</p>
-<p><strong>Create the Postgresql database</strong><br />
-Launch the postgresql db before running the django server.</p>
-<p><strong>Setting up Login (Social Auth)</strong><br />
-Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Google Plus, Twitter) thanks to the django-allauth library.  At this moment, you&rsquo;ll need to set up your social account in the database before the site will work.</p>
+<p><strong>Setup</strong></p>
+<p>Jobwaffle is open source.  There&rsquo;s a lot of technical setup so stick with the installation steps below.  The site is currently hosted on a free heroku tier so it&rsquo;ll probably run really slow on live.</p>
+<p><strong>secret.py</strong></p>
+<p>In &lsquo;secret.py&rsquo;, enter your own fields for SECRET_KEY, AWS_ACCESS_KEY_ID, EMAIL_HOST, etc.  The version on GitHub are fake info.  Don&rsquo;t push your version of secret.py onto version control (add to your .gitignore file).</p>
+<p><strong>Create the Postgresql database</strong></p>
+<p>Launch the postgresql db before running the django server.</p>
+<p><strong>Setting up Login (Social Auth)</strong></p>
+<p>Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Google Plus, Twitter) thanks to the django-allauth library.  At this moment, you&rsquo;ll need to set up your social account in the database before the site will work.</p>
 <ol>
 <li>Go to <a href="https://developers.facebook.com/apps/">Facebook&rsquo;s Developer Program</a> and register your application</li>
 <li>You&rsquo;ll get a <code>Client ID</code> and <code>Secret key</code></li>
 <li>Under the <a href="http://localhost:8000/admin/socialaccount/socialapp/add/">Django admin</a>, add provider &lsquo;Facebook&rsquo; under &lsquo;Social Accounts&rsquo;, &lsquo;Social Applications&rsquo;.</li>
 <li>Make sure to add in the actual site (e.g. <a href="http://www.jobwaffle.com">www.jobwaffle.com</a>) as well as available sites (<code>127.0.0.1:8000</code> and <code>localhost:8000</code>)</li>
 </ol>
-<p><strong>Python Environment</strong><br />
-<em>  Use &lsquo;pip&rsquo;, virtualenv&rsquo;, and &lsquo;virtualenvwrapper&rsquo;<br />
-</em>  Make virtualenv: $<code>mkvirtualenv jobwaffle</code><br />
-<em>  Activate virtualenv: $<code>workon jobwaffle</code><br />
-</em>  Install requirements: $<code>pip install -r requirements.txt</code></p>
-<p><strong>Launch Django Server</strong><br />
-<em>  Get static files: $<code>python manage.py collecstatic</code><br />
-</em>  Sync the database: $<code>python manage.py migrate</code><br />
-*  Launch dev server: $<code>python manage.py runserver --setting=jobwaffle.settings.dev_will</code></p>
-<p><strong>Launch on Heroku</strong><br />
-1. Login: $<code>heroku login</code><br />
-2. Create Heroku app: $<code>heroku create</code><br />
-3. Rename Heroku app: $<code>heroku rename jobwaffle</code><br />
-4. Push code to Heroku <code>git push heroku master</code></p>
-<p><strong>Travis-CI</strong><br />
-*  <code>.travis.yml</code> file is for continuous integration settings<br />
-TODO: Add test cases, check on push using continuous integration</p></article></body></html>
+<p><strong>Python Environment</strong></p>
+<ul>
+<li>Use &lsquo;pip&rsquo;, virtualenv&rsquo;, and &lsquo;virtualenvwrapper&rsquo;</li>
+<li>Make virtualenv: $<code>mkvirtualenv jobwaffle</code></li>
+<li>Activate virtualenv: $<code>workon jobwaffle</code></li>
+<li>Install requirements: $<code>pip install -r requirements.txt</code></li>
+</ul>
+<p><strong>Launch Django Server</strong></p>
+<ul>
+<li>Get static files: $<code>python manage.py collecstatic</code></li>
+<li>Sync the database: $<code>python manage.py migrate</code></li>
+<li>Launch dev server: $<code>python manage.py runserver --setting=jobwaffle.settings.dev_will</code></li>
+</ul>
+<p><strong>Launch on Heroku</strong></p>
+<ol>
+<li>Login: $<code>heroku login</code></li>
+<li>Create Heroku app: $<code>heroku create</code></li>
+<li>Rename Heroku app: $<code>heroku rename jobwaffle</code></li>
+<li>Push code to Heroku <code>git push heroku master</code></li>
+</ol>
+<p><strong>Testing</strong></p>
+<ul>
+<li>Run only functional tests using: $<code>python manage.py test functional_tests</code></li>
+<li>Run only unit tests using: $<code>coverage run manage.py test --settings=jobwaffle.settings.dev_will</code></li>
+<li>Run both functional and unit tests using: $<code>python manage.py test --settings=jobwaffle.settings.dev_will</code></li>
+</ul>
+<p><strong>Travis-CI</strong></p>
+<ul>
+<li><code>.travis.yml</code> file is for continuous integration settings</li>
+<li>TODO: Add test cases, check on push using continuous integration</li>
+</ul></article></body></html>

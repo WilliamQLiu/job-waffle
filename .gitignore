@@ -67,10 +67,6 @@ static/css/.DS_Store
 static/js/.DS_Store
 
 
-jobwaffle/secret.py
-
-jobwaffle/settings/secret.py
-
 *.sublime-workspace
 
 *.sublime-project
