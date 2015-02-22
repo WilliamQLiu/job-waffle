@@ -1,12 +1,15 @@
 language: python
 python:
-#  - "3.3"
   - "2.7"
-#  - "2.6"
-# command to install dependencies
+
 install:
-  - pip install -r requirements.txt --use-mirrors
-# command to run tests, e.g. python setup.py test
-#script:  nosetests
-#script: python tests/test_all_of_the_units.py
-script: "cd job-waffle;python manage.py test functional_tests"
+  - pip install -r requirements.txt
+
+#env:
+#  global:
+
+before script:
+  - "python manage.py runserver --settings=jobwaffle.settings.dev_will"
+
+script:
+  - "python manage.py test functional_tests --settings=jobwaffle.settings.dev_will"
