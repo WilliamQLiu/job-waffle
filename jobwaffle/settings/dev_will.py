@@ -27,6 +27,7 @@ TEMPLATE_DEBUG = True
 
 #ALLOWED_HOSTS = ['www.jobwaffle.com', 'jobwaffle.com']
 
+'''
 DATABASES = {
     'default': {
 
@@ -40,6 +41,9 @@ DATABASES = {
 
     }
 }
+'''
+
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 # Application definition
 INSTALLED_APPS = (
