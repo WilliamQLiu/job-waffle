@@ -35,8 +35,24 @@ else:
     TEMPLATE_STRING_IF_INVALID = "INVALID EXPERSSION: %s"
     # For complex templates, this exp prints incorrect fields for debugging
 
-DATABASE_URL='postgres://postgres:@localhost:5432/jobwaffle'
-DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+
+#Postgresql
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'jobwaffle',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': ''
+    }
+}
+DATABASE_URL='postgres://:@localhost/jobwaffle'
+#DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+DATABASES['default'] =  dj_database_url.config(default=DATABASE_URL)
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Email Settings from secret.py
@@ -85,8 +101,6 @@ WSGI_APPLICATION = 'jobwaffle.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-# Parse database configuration from $DATABASE_URL
-DATABASES['default'] =  dj_database_url.config()  # For Heroku
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
