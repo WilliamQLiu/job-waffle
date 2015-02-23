@@ -61,7 +61,8 @@ before_script:
   #- cp config/database.yml.travis config/database.yml
   - python manage.py migrate --noinput --settings=jobwaffle.settings.dev_will
   - python manage.py collectstatic --noinput --settings=jobwaffle.settings.dev_will
-  - python manage.py runserver --settings=jobwaffle.settings.dev_will
+  #- python manage.py runserver --settings=jobwaffle.settings.dev_will
 
 script:
-  - "python manage.py test functional_tests --settings=jobwaffle.settings.dev_will"
+  - python manage.py test functional_tests --settings=jobwaffle.settings.dev_will
+  - coverage run manage.py test --settings=jobwaffle.settings.dev_will
