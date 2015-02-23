@@ -19,7 +19,7 @@ import socket
 import dj_database_url  # for heroku
 from .secret import MY_SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, \
     EMAIL_USE_TLS, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, \
-    EMAIL_PORT, DATABASE_URL
+    EMAIL_PORT
 
 #SECRET_KEY = MY_SECRET_KEY
 
@@ -35,10 +35,7 @@ else:
     TEMPLATE_STRING_IF_INVALID = "INVALID EXPERSSION: %s"
     # For complex templates, this exp prints incorrect fields for debugging
 
-#if DEBUG:
-#    DATABASE_URL = ''
-#else:
-#    DATABASE_URL = ''
+DATABASE_URL='postgres://postgres:@localhost:5432/jobwaffle'
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 

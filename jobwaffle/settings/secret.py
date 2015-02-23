@@ -5,7 +5,7 @@
 
 # Django Secret Key - This one is just a randomly generated version that
 # won't be used on a live site; replace with your own
-MY_SECRET_KEY = 'as+i&=gnf*8+xqoz3=*264@_o2264iy*rom4b)86cj$k2b584('
+MY_SECRET_KEY = 'as\i\=gnf*8+xqoz3=*264@_o2264iy*rom4b)86cj$k2b584('
 
 # Email Settings
 EMAIL_USE_TLS = '<insert tls>'
