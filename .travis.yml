@@ -48,14 +48,14 @@ python:
 #before_install:
 
 install:
-  - pip install -r requirements.txt
+  - "pip install -r requirements.txt"
 
 before_script:
-  - psql -c 'create database jobwaffle;'
+  - "psql -c 'create database jobwaffle;'"
   #- cp config/database.yml.travis config/database.yml
-  - python manage.py migrate
+  - "python manage.py migrate"
   #- python manage.py collectstatic
-  - python manage.py runserver --settings=jobwaffle.settings.dev_will
+  - "python manage.py runserver --settings=jobwaffle.settings.dev_will"
 
 script:
-  - python manage.py test functional_tests --settings=jobwaffle.settings.dev_will
+  - "python manage.py test functional_tests --settings=jobwaffle.settings.dev_will"
