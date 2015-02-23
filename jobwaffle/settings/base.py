@@ -16,9 +16,11 @@ from __future__ import absolute_import  # Allow explicit relative imports
 import os
 import socket
 
+import dj_database_url  # for heroku
 from .secret import MY_SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, \
     EMAIL_USE_TLS, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, \
-    EMAIL_PORT
+    EMAIL_PORT, DATABASE_URL
+
 
 SECRET_KEY = MY_SECRET_KEY
 
@@ -33,6 +35,13 @@ else:
     DEBUG = True
     TEMPLATE_STRING_IF_INVALID = "INVALID EXPERSSION: %s"
     # For complex templates, this exp prints incorrect fields for debugging
+
+if DEBUG:
+    DATABASE_URL = ''
+else:
+    DATABASE_URL = ''
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+
 
 # Email Settings from secret.py
 EMAIL_USE_TLS = EMAIL_USE_TLS
@@ -81,7 +90,7 @@ WSGI_APPLICATION = 'jobwaffle.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 # Parse database configuration from $DATABASE_URL
-#DATABASES['default'] =  dj_database_url.config()  # For Heroku
+DATABASES['default'] =  dj_database_url.config()  # For Heroku
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

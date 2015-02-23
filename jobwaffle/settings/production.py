@@ -9,7 +9,6 @@
 from __future__ import absolute_import  # Allow explicit relative imports
 
 from .base import *
-import dj_database_url  # for heroku
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False

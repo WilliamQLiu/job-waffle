@@ -34,16 +34,14 @@ DATABASES = {
         #Postgresql
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jobwaffle',
-        'USER': 'williamliu',
+        'USER': '',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': '',
         'PORT': '',
 
     }
 }
 '''
-
-DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 # Application definition
 INSTALLED_APPS = (

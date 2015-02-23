@@ -34,6 +34,7 @@ python:
 
 env:
  - DATABASE_URL='postgres://postgres:@localhost:5432/jobwaffle'
+ - SECRET_KEY='as\i\=gnf*8+xqoz3=*264@_o2264iy*rom4b)86cj$k2b584('
 #  global:
 #  - DB=postgresql
 
