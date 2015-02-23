@@ -51,7 +51,7 @@ install:
   - pip install -r requirements.txt
 
 before_script:
-  - psql -c 'create database jobwaffle;' -U williamliu
+  - psql -c 'create database jobwaffle;'
   #- cp config/database.yml.travis config/database.yml
   - python manage.py migrate
   #- python manage.py collectstatic
