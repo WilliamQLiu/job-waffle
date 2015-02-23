@@ -19,11 +19,26 @@ import unittest
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys  # Allows us to enter 'keys'
+import time
+import pdb
+
 
 
 ### Setup
 class NewVisitorTest(LiveServerTestCase):
     """ Does landing page load? """
+
+    def spin_assert(self, msg, assertion):
+        """ Selenium sometimes works too fast, this retries a few times """
+        for i in xrange(60):
+            try:
+                self.assertTrue(assertion())
+                return
+            except Exception, e:
+                pass
+            time.sleep(1)
+            self.fail(msg)
+
 
     def setUp(self):
         """ setUp runs before each test, like a try in try/except """
@@ -34,16 +49,22 @@ class NewVisitorTest(LiveServerTestCase):
         """ tearDown runs after each test, even if there's an error during the test itself """
         self.browser.quit()
 
-    def test_see_main_page_elements(self):
+    def test_see_main_page_elements(self, text="Jobwaffle", msg=None):
         """ Can see the main page elements like buttons, links """
         # Will needs to enter in some data; he opens up his browser
         self.browser.get('http://localhost:8000')  # Local Dev Env (Hard Coded)
+
+        #time.sleep(5)
+        #msg = msg or " waiting for text %s to appear" % text
+        #assertion = lambda: self.selenium.is_text_present(text)
+        #self.spin_assert(msg, assertion)
+
         #self.browser.get('http://10.1.1.7')  # Ubuntu Server
         #self.browser.get(self.live_server_url)  # uses Django's server
 
         # Will notices the page title
         #self.assertIn('Jobwaffle', self.browser.title)
-        assert 'Jobwaffle' in self.browser.title , "The Browser Title is " + self.browser.title
+        #assert 'Jobwaffle' in self.browser.title , "The Browser Title is " + self.browser.title
 
     """
 

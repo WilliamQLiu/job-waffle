@@ -64,5 +64,5 @@ before_script:
   #- python manage.py runserver --settings=jobwaffle.settings.dev_will
 
 script:
-  - python manage.py test functional_tests --settings=jobwaffle.settings.dev_will
+  #- python manage.py test functional_tests --settings=jobwaffle.settings.dev_will
   - coverage run manage.py test --settings=jobwaffle.settings.dev_will
