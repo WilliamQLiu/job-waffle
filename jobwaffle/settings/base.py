@@ -21,8 +21,7 @@ from .secret import MY_SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, \
     EMAIL_USE_TLS, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, \
     EMAIL_PORT, DATABASE_URL
 
-
-SECRET_KEY = MY_SECRET_KEY
+#SECRET_KEY = MY_SECRET_KEY
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
@@ -36,10 +35,10 @@ else:
     TEMPLATE_STRING_IF_INVALID = "INVALID EXPERSSION: %s"
     # For complex templates, this exp prints incorrect fields for debugging
 
-if DEBUG:
-    DATABASE_URL = ''
-else:
-    DATABASE_URL = ''
+#if DEBUG:
+#    DATABASE_URL = ''
+#else:
+#    DATABASE_URL = ''
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 
