@@ -47,6 +47,7 @@ DATABASES = {
         'PORT': ''
     }
 }
+
 DATABASE_URL='postgres://:@localhost/jobwaffle'
 #DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 DATABASES['default'] =  dj_database_url.config(default=DATABASE_URL)
