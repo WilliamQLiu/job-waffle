@@ -1,15 +1,61 @@
+##############################################################################
+#    .travis.yml file is for travis continuous integration
+#    Check that the yaml is valid at: http://lint.travis-ci.org/
+#
+#    1. clones project repository from GitHub
+#    2. `cd` to cloned directory
+#    3. checkout commit for the build
+#    4. runs `before_install` commands
+#        *  prepare system to install prerequisites or dependencies
+#        *  e.g. sudo apt-get update
+#        *  usually used to update git submodules
+#    5. runs `install` commands (install any prerequisites or dependencies)
+#        *  install any prerequisites or dependencies necessary to run build
+#        *  if you want to skip the entire install, set `install: true`
+#    6. runs 'before_script' commands
+#        *  prepare your build for testing
+#        *  e.g. copy database configurations, environment variables, etc.
+#    7. run test `script` commands
+#        *  runs the test scripts specific to your language
+#        *  this is the main test / reason for having travis ci
+#        *  all commands must exit with code 0 on success, all else is fail
+#    8. run `after_success` or `after_failure`
+#    9. run `after_script` commands
+#        *  can access result in `TRAVIS_TEST_RESULT` (0 = pass, other = fail)
+##############################################################################
+
 language: python
 python:
   - "2.7"
 
+#env:
+#  global:
+#  - DB=postgresql
+
+##############################################################################
+# can whitelist (only) or blacklist (except) specific branches
+##############################################################################
+#branches:
+#  only:
+#    - master
+
+##############################################################################
+# addons can specify exact versions of postgresql instead of the default (9.1)
+##############################################################################
+#addons:
+#  postgresql: "9.3"
+
+#before_install:
+
 install:
   - pip install -r requirements.txt
 
-#env:
-#  global:
-
-before script:
-  - "python manage.py runserver --settings=jobwaffle.settings.dev_will"
+before_script:
+  - psql -c 'create database jobwaffle;' -U williamliu
+  #- cp config/database.yml.travis config/database.yml
+  - python manage.py migrate
+  #- python manage.py collectstatic
+  - python manage.py runserver --settings=jobwaffle.settings.dev_will
 
 script:
-  - "python manage.py test functional_tests --settings=jobwaffle.settings.dev_will"
+  - python manage.py test functional_tests --settings=jobwaffle.settings.dev_will
