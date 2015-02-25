@@ -13,10 +13,6 @@
 		{
 			"follow_symlinks": true,
 			"path": "."
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/Users/williamliu/GitHub/MHADjango"
 		}
 	]
 }

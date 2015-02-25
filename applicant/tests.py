@@ -2,7 +2,8 @@
     Each line of production code we write should be tested by at least
     one of our unit tests
 
-    Run specific tests for an application using: python manage.py test
+    Run specific tests for an application using:
+    $python manage.py test --settings=jobwaffle.settings.dev_will
 
     COVERAGE
     Check test coverage with:
@@ -35,11 +36,12 @@ class SmokeTest(TestCase):
 
 class MainPageTest(TestCase):
 
-    '''
+
     def test_root_url_resolves_to_base_view(self):
         found = resolve('/')  # resolves this url to map with function in views
         self.assertEqual(found.func, Base)  # Found the url and function
 
+    '''
     def test_base_page_returns_correct_html(self):
         request = HttpRequest()  # What Django sees when browser asks for page
         response = Base(request)  # Pass it to our view 'Base' and get response

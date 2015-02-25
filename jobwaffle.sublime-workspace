@@ -123,38 +123,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "jobwaffle/settings/base.py",
-			"settings":
-			{
-				"buffer_size": 5100,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "jobwaffle/settings/production.py",
-			"settings":
-			{
-				"buffer_size": 3100,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/base.html",
-			"settings":
-			{
-				"buffer_size": 4327,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/accounts/login.html",
-			"settings":
-			{
-				"buffer_size": 1373,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -241,20 +209,39 @@
 	"expanded_folders":
 	[
 		"/Users/williamliu/GitHub/job-waffle",
+		"/Users/williamliu/GitHub/job-waffle/applicant",
+		"/Users/williamliu/GitHub/job-waffle/employer",
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle",
-		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings",
-		"/Users/williamliu/GitHub/job-waffle/templates"
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings"
 	],
 	"file_history":
 	[
-		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/dev_will.py",
-		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/production.py",
-		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/secret.py",
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle/urls.py",
-		"/Users/williamliu/GitHub/job-waffle/.travis.yml",
+		"/Users/williamliu/GitHub/job-waffle/applicant/views.py",
+		"/Users/williamliu/GitHub/job-waffle/README.md",
+		"/Users/williamliu/GitHub/job-waffle/applicant/serializers.py",
+		"/Users/williamliu/GitHub/job-waffle/employer/views.py",
+		"/Users/williamliu/GitHub/job-waffle/applicant/models.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/base.py",
 		"/Users/williamliu/GitHub/job-waffle/requirements.txt",
-		"/Users/williamliu/GitHub/python-examples/elasticsearch/simple_search.py",
+		"/Users/williamliu/GitHub/job-waffle/employer/serializers.py",
+		"/Users/williamliu/GitHub/job-waffle/applicant/tests.py",
+		"/Users/williamliu/GitHub/job-waffle/functional_tests/test_functional.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/wsgi.py",
+		"/Users/williamliu/GitHub/job-waffle/manage.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/dev_will.py",
+		"/Users/williamliu/GitHub/job-waffle/.travis.yml",
+		"/Users/williamliu/GitHub/MHADjango/datasite/timesheets/tests.py",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/production.py",
+		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/wsgi.py",
 		"/Users/williamliu/.bash_profile",
+		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/secret.py",
+		"/Users/williamliu/GitHub/job-waffle/config/database.yml.travis",
+		"/Users/williamliu/GitHub/job-waffle/database.yml.travis",
+		"/Users/williamliu/GitHub/job-waffle/templates/base.html",
+		"/Users/williamliu/GitHub/job-waffle/.gitignore",
+		"/Users/williamliu/GitHub/job-waffle/templates/accounts/login.html",
+		"/Users/williamliu/GitHub/python-examples/elasticsearch/simple_search.py",
 		"/Users/williamliu/.oh-my-zsh",
 		"/Users/williamliu/.zshrc",
 		"/usr/local/var/postgres/pg_hba.conf",
@@ -262,11 +249,7 @@
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings.py",
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/staging.py",
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle/settings/__init__.py",
-		"/Users/williamliu/GitHub/job-waffle/templates/base.html",
-		"/Users/williamliu/GitHub/job-waffle/README.md",
 		"/Users/williamliu/Downloads/client_secret_413124145982-c0rai9kn2gdoe9bm7kl18qmjca0spaqr.apps.googleusercontent.com.json",
-		"/Users/williamliu/GitHub/job-waffle/applicant/views.py",
-		"/Users/williamliu/GitHub/job-waffle/employer/views.py",
 		"/Users/williamliu/GitHub/job-waffle/templates/socialdone.html",
 		"/Users/williamliu/GitHub/job-waffle/applicant/tasks.py",
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle/secret.py",
@@ -274,7 +257,6 @@
 		"/Users/williamliu/GitHub/job-waffle/jobwaffle/celery.py",
 		"/Users/williamliu/GitHub/job-waffle/static/css/bootstrap.min.css",
 		"/Users/williamliu/GitHub/job-waffle/development.yml",
-		"/Users/williamliu/GitHub/job-waffle/.gitignore",
 		"/Users/williamliu/GitHub/job-waffle/db.sqlite3",
 		"/Users/williamliu/.ssh/config",
 		"/Users/williamliu/GitHub/job-waffle/env_vars/base.yml",
@@ -336,7 +318,6 @@
 		"/Users/williamliu/GitHub/MHADjango/datasite/templates/misc.html",
 		"/Users/williamliu/GitHub/Python/pycrypto/sample_pycrypto.py",
 		"/Users/williamliu/GitHub/MHADjango/datasite/templates/program_list.html",
-		"/Users/williamliu/GitHub/MHADjango/datasite/timesheets/tests.py",
 		"/Users/williamliu/GitHub/MHADjango/datasite/timesheets/test_programs.py",
 		"/Users/williamliu/GitHub/MHADjango/datasite/functional_tests/test_functional.py",
 		"/Users/williamliu/GitHub/MHADjango/datasite/timesheets/admin.py",
@@ -362,19 +343,7 @@
 		"/Users/williamliu/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/Users/williamliu/GitHub/MHADjango/datasite/ddh/views.py",
 		"/Users/williamliu/GitHub/d3-book/chapter_06/15_making_a_bar_chart_even.html",
-		"/Users/williamliu/GitHub/d3-book/chapter_06/21_making_a_bar_chart_aligned.html",
-		"/Users/williamliu/GitHub/d3-book/chapter_06/06_power_of_data_random.html",
-		"/Users/williamliu/GitHub/MHADjango/datasite/media/ddh_texts.csv",
-		"/Users/williamliu/GitHub/MHADjango/datasite/config/sql/load_csv.sql",
-		"/Users/williamliu/GitHub/Misc/D3 Template/d3/d3.v3.js",
-		"/Users/williamliu/GitHub/MHADjango/datasite/ddh/admin.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/celery.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/config/long_script.conf",
-		"/Users/williamliu/GitHub/MHADjango/datasite/config/nginx.conf",
-		"/Users/williamliu/GitHub/MHADjango/datasite/config/sample_long.sh",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/local_settings.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/settings/__init__.py",
-		"/Users/williamliu/GitHub/MHADjango/datasite/dataentry/email_info.py"
+		"/Users/williamliu/GitHub/d3-book/chapter_06/21_making_a_bar_chart_aligned.html"
 	],
 	"find":
 	{
@@ -397,6 +366,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"job",
+			"routers",
+			"resume",
+			"filterset",
+			"base",
+			"database_url",
+			"secure",
+			"secure_proxy",
+			"database_url",
+			"timesheet",
 			"social",
 			"trans",
 			"base.html",
@@ -514,15 +493,7 @@
 			"id",
 			"conversation",
 			"name",
-			"how did you find out",
-			"word_wrap",
-			"wrap",
-			"mydataframe",
-			"New York",
-			"new york",
-			"array",
-			"4",
-			"space"
+			"how did you find out"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -542,132 +513,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "jobwaffle/settings/base.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5100,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1332,
-								1332
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"open_with_edit": true,
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 355.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "jobwaffle/settings/production.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3100,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								861,
-								861
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 775.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "templates/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4327,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								515,
-								515
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "templates/accounts/login.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1373,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								156,
-								156
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 5.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -716,7 +563,7 @@
 	},
 	"output.markdown":
 	{
-		"height": 102.0
+		"height": 90.0
 	},
 	"output.sftp":
 	{
@@ -760,7 +607,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 230.0,
+	"side_bar_width": 250.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

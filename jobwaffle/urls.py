@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.conf import settings  # Need for static content
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
-#from rest_framework import routers
+from rest_framework import routers
 
 
 from applicant.views import Base, ResumeCreateView, ResumeListView, \
@@ -10,12 +10,17 @@ from applicant.views import Base, ResumeCreateView, ResumeListView, \
 from employer.views import JobCreateView, JobListView, \
     JobSearchView, JobPostView, JobUpdateView, JobDeleteView
 
+from applicant.views import ResumeViewSet, EducationViewSet, ExperienceViewSet
+from employer.views import JobViewSet
+
 admin.autodiscover()
 
 # Routers provide an easy way of automatically determining the URL conf
-#router = routers.DefaultRouter()
-#router.register(r'resume', resumeViewSet)
-
+router = routers.DefaultRouter()
+router.register(r'api/resume', ResumeViewSet)
+router.register(r'api/education', EducationViewSet)
+router.register(r'api/experience', ExperienceViewSet)
+router.register(r'api/job', JobViewSet)
 
 urlpatterns = patterns('',
 
@@ -81,6 +86,10 @@ urlpatterns = patterns('',
     # User Profile Page
     url(r'^profile/(?P<username>\w+)/$', Profile.as_view(),
         name="profile"),  # Profile Page
+
+    # Django Rest Framework
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 
     url(r'^admin/', include(admin.site.urls)),

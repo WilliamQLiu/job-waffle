@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.encoding import smart_unicode
 from django.contrib.auth.models import User  # Get User info
 
+
 class Job(models.Model):
     """ Information about the job listing; what company, title, salary, description,
         picture of office, etc. """

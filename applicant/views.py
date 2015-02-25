@@ -9,9 +9,12 @@ from django.utils.decorators import method_decorator  # Allow LoggedInMixin
 from django.views.generic import TemplateView, View, ListView, \
     UpdateView, DeleteView, CreateView, FormView
 from django.contrib.auth.models import User
+import django_filters
 
 from .models import Resume, Education, Experience
 from .forms import ResumeForm
+from .serializers import ResumeSerializer, EducationSerializer, \
+    ExperienceSerializer
 
 from rest_framework import viewsets, authentication, permissions, filters
 
@@ -137,3 +140,86 @@ class ResumeViewSet(LoggedInMixin, viewsets.ModelViewSet):
 
     filter_class = ResumeFilter
 '''
+
+# FOR DJANGO REST FRAMEWORK (DRF)
+
+class DefaultsMixin(object):
+    """
+        Default settings for view authentication, permissions,
+        filtering and pagination
+    """
+    authentication_classes = (
+        authentication.BasicAuthentication,
+        authentication.TokenAuthentication,
+        )
+
+    permission_classes = (
+        permissions.IsAuthenticated,  # Access to GET, POST, HEAD, OPTIONS
+        #IsReadOnlyRequest,
+        #permissions.IsAuthenticatedOrReadOnly
+        )
+
+    filter_backends = (
+        filters.DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter,
+        )
+
+    paginate_by = 50
+    paginate_by_param = 'page_size'
+    max_paginate_by = 500
+
+
+# DRF FILTERS
+
+class ResumeFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(name='name')
+
+    class Meta:
+        model = Resume
+        fields = ('timestamp_updated', 'name', 'location')
+
+
+class EducationFilter(django_filters.FilterSet):
+    start_date = django_filters.DateFilter(name='start_date', lookup_type='gte')
+    end_date = django_filters.DateFilter(name='end_date', lookup_type='lte')
+
+    class Meta:
+        model = Education
+        fields = ('school', 'start_date', 'end_date', 'major', 'degree',
+                  'description')
+
+
+class ExperienceFilter(django_filters.FilterSet):
+    start_date = django_filters.DateFilter(name='start_date', lookup_type='gte')
+    end_date = django_filters.DateFilter(name='end_date', lookup_type='lte')
+
+    class Meta:
+        model = Experience
+        fields = ('company', 'start_date', 'end_date', 'title', 'location'
+                  )
+
+
+# DRF VIEWSETS
+
+class ResumeViewSet(DefaultsMixin, viewsets.ModelViewSet):
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer
+    filter_class = ResumeFilter
+    search_fields = ('name')
+    ordering_fields = ('timestamp_updated')
+
+
+class EducationViewSet(DefaultsMixin, viewsets.ModelViewSet):
+    queryset = Education.objects.all()
+    serializer_class = EducationSerializer
+    filter_class = EducationFilter
+    search_fields = ('start_date', 'end_date')
+
+
+class ExperienceViewSet(DefaultsMixin, viewsets.ModelViewSet):
+    queryset = Experience.objects.all()
+    serializer_class = ExperienceSerializer
+    filter_class = ExperienceFilter
+    search_fields = ('start_date', 'end_date')
+

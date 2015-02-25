@@ -4,9 +4,14 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, render_to_response, RequestContext, Http404
 from django.utils.decorators import method_decorator # Allow LoggedInMixin
 from django.views.generic import TemplateView, View, ListView, UpdateView, DeleteView, CreateView
+import django_filters
 
 from .models import Job
 from .forms import JobForm
+from .serializers import JobSerializer
+
+from rest_framework import viewsets, authentication, permissions, filters
+
 
 '''def home(request):
     """ Just a blank homepage """
@@ -133,3 +138,52 @@ class JobDeleteView(LoggedInMixin, DeleteView):
         specific_id = self.kwargs['pk']  # Pass variable 'pk' from urls.py
         return Job.objects.filter(id=specific_id)
 
+
+
+# FOR DJANGO REST FRAMEWORK (DRF)
+
+class DefaultsMixin(object):
+    """
+        Default settings for view authentication, permissions,
+        filtering and pagination
+    """
+    authentication_classes = (
+        authentication.BasicAuthentication,
+        authentication.TokenAuthentication,
+        )
+
+    permission_classes = (
+        permissions.IsAuthenticated,  # Access to GET, POST, HEAD, OPTIONS
+        #IsReadOnlyRequest,
+        #permissions.IsAuthenticatedOrReadOnly
+        )
+
+    filter_backends = (
+        filters.DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter,
+        )
+
+    paginate_by = 50
+    paginate_by_param = 'page_size'
+    max_paginate_by = 500
+
+
+# DRF FILTERS
+
+class JobFilter(django_filters.FilterSet):
+    company = django_filters.CharFilter(name='company')
+
+    class Meta:
+        model = Job
+        fields = ('timestamp_updated', 'company', 'title')
+
+
+# DRF VIEWSETS
+
+class JobViewSet(DefaultsMixin, viewsets.ModelViewSet):
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+    filter_class = JobFilter
+    search_fields = ('name')
+    ordering_fields = ('timestamp_updated')

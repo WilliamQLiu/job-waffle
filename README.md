@@ -61,7 +61,17 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 * Run only unit tests using: $`coverage run manage.py test --settings=jobwaffle.settings.dev_will`
 * Run both functional and unit tests using: $`python manage.py test --settings=jobwaffle.settings.dev_will`
 
+
 **Travis-CI**
 
-*  `.travis.yml` file is for continuous integration settings
-*  TODO: Add test cases, check on push using continuous integration
+*  `.travis.yml` file is for continuous integration settings.  The idea is that each build is checked in and verified by an automated build to detect problems early.  
+*  Builds shown [here](https://travis-ci.org/WilliamQLiu/job-waffle)
+*  TODO: Add test cases :\
+
+
+**Coveralls**
+
+*  Coveralls shows how much of your project is covered by tests.  
+*  Coverage shown [here](https://coveralls.io/r/WilliamQLiu/job-waffle)
+
+
