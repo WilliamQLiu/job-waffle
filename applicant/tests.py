@@ -34,6 +34,7 @@ class SmokeTest(TestCase):
         self.assertEqual(1 + 1, 2)
 
 
+'''
 class MainPageTest(TestCase):
 
 
@@ -41,7 +42,7 @@ class MainPageTest(TestCase):
         found = resolve('/')  # resolves this url to map with function in views
         self.assertEqual(found.func, Base)  # Found the url and function
 
-    '''
+
     def test_base_page_returns_correct_html(self):
         request = HttpRequest()  # What Django sees when browser asks for page
         response = Base(request)  # Pass it to our view 'Base' and get response
@@ -52,7 +53,7 @@ class MainPageTest(TestCase):
         # Decode helps us convert reponse's content bytes to unicode strings
         #print repr(response.content.decode()) # Print response for debugging
         #time.sleep(10)
-    '''
+'''
 
 
 if __name__ == '__main__':
