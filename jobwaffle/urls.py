@@ -91,6 +91,9 @@ urlpatterns = patterns('',
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
+    # Haystack for ElasticSearch, it's a URLconf point to 'SearchView' instance
+    (r'^search/', include('haystack.urls')),
+
 
     url(r'^admin/', include(admin.site.urls)),
 )

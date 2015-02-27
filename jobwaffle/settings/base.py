@@ -184,7 +184,7 @@ REST_FRAMEWORK = {
     # request.user and request.auth properties
     'DEFAULT_PERMISSION_CLASSES': [
         #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        #'rest_framework.permissions.IsAuthenticated'  # Must be Authenticated to login
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'rest_framework.permissions.IsAuthenticated'  # Must be Authenticated to login
+        #'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ]
 }

@@ -28,6 +28,7 @@ language: python
 
 services:
   - postgresql
+  - elasticsearch
 
 python:
   - "2.7"

@@ -47,6 +47,13 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 *  Launch dev server: $`python manage.py runserver --setting=jobwaffle.settings.dev_will`
 
 
+**Launch ElasticSearch**
+
+*  On local Mac, start ElasticSearch with: `elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml`
+*  To build your search index, do: `python manage.py rebuild_index --settings=jobwaffle.settings.dev_will`
+*  To rebuild your search index, do: `python manage.py update_index --settings=jobwaffle.settings.dev_will`
+
+
 **Launch on Heroku**
 
 1. Login: $`heroku login`

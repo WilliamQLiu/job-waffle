@@ -1,0 +1,33 @@
+{
+    "count": 3,
+    "next": null,
+    "previous": null,
+    "results": [{
+        "company": "Twitter",
+        "title": "Data Analyst",
+        "description": "This is a job description",
+        "status": "Full Time",
+        "occupation": "Programming",
+        "salary_min": 80000,
+        "salary_max": 120000,
+        "location": "New York, NY"
+    }, {
+        "company": "Will's Company",
+        "title": "Full Stack Engineer",
+        "description": "Another description",
+        "status": "Part Time",
+        "occupation": "Nonprofit",
+        "salary_min": 1,
+        "salary_max": 10,
+        "location": "San Diego, CA"
+    }, {
+        "company": "Facebook",
+        "title": "Full stack engineer",
+        "description": "Describe the job here. lalalalalalalalalalalalalala",
+        "status": "Full Time",
+        "occupation": "Programming",
+        "salary_min": 50000,
+        "salary_max": 75000,
+        "location": "Manhattan, NY"
+    }]
+}

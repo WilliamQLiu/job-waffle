@@ -77,6 +77,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',  # templates look nice
+    'haystack',
     'employer',
     'applicant',
     'rest_framework',  # DjangoRestFramework
@@ -91,3 +92,11 @@ INSTALLED_APPS = (
     #'allauth.socialaccount.providers.google',
     #'allauth.socialaccount.providers.twitter',
 )
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
