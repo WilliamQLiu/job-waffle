@@ -3,9 +3,8 @@ from django.contrib.auth.models import User  # Get User info
 from django.db import models
 from django.utils.encoding import smart_unicode
 
-from allauth.account.models import EmailAddress
-from allauth.socialaccount.models import SocialAccount
-#import hashlib
+#from allauth.account.models import EmailAddress
+#from allauth.socialaccount.models import SocialAccount
 
 '''
 class UserProfile(models.Model):
@@ -45,6 +44,7 @@ class UserProfile(models.Model):
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 '''
 
+
 class ResumeQuerySet(models.query.QuerySet):
     def get_active(self):
         return self.get_active(active=True)
@@ -68,9 +68,9 @@ class Resume(models.Model):
     timestamp_updated = models.DateTimeField(auto_now=True,  # Update now
                                              auto_now_add=False  # When create
                                              )
-    name = models.CharField(max_length=255, null=False, blank=True) # Resume's name
+    name = models.CharField(max_length=255, null=False, blank=True)
     location = models.CharField(max_length=255, null=False, blank=True)
-    phone_number = models.CharField(max_length=35, null=False, blank=True)
+    phone_number = models.CharField(max_length=11, null=False, blank=True)
     accomplishment = models.TextField()
 
     class Meta:
@@ -85,29 +85,12 @@ class Resume(models.Model):
 class Education(models.Model):
     """ Applicant's Education """
     resume = models.ForeignKey(Resume)
-    school = models.CharField(max_length=255, null=False, blank=True)
+    school = models.CharField(max_length=1024, null=False, blank=True)
+    location = models.CharField(max_length=512, null=False, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
-    major = models.CharField(max_length=255, null=False, blank=True)
-    # Types of degrees
-    ASSOCIATE_ARTS = 'AR' # Associate of Arts
-    ASSOCIATE_SCIENCE = 'AS' # Associate of Science
-    ASSOCIATE_APPLIED_SCIENCE = 'AAS' # Associate of Applied Science
-    ASSOCIATE_APPLIED_ART = 'AAA' # Associate of Applied Art
-    ASSOCIATE_POLITICAL_SCIENCE = 'APS' # Associate of Political Science
-    BACHELOR_ARTS = 'BA' # Bachelor of Arts
-    BACHELOR_SCIENCE = 'BS' # Bachelor of Science
-    DEGREE_CHOICES = (
-        (ASSOCIATE_ARTS, 'Associate of Arts'),
-        (ASSOCIATE_SCIENCE, 'Associate of Science'),
-        (ASSOCIATE_APPLIED_SCIENCE, 'Associate of Applied Science'),
-        (ASSOCIATE_APPLIED_ART, 'Associate of Applied Art'),
-        (ASSOCIATE_POLITICAL_SCIENCE, 'Associate of Political Science'),
-        (BACHELOR_ARTS, 'Bachelor of Arts'),
-        (BACHELOR_SCIENCE, 'Bachelor of Science'),
-    )
-    degree = models.CharField(max_length=3,
-                             choices=DEGREE_CHOICES)
+    current = models.BooleanField()  # Currently in school
+    title = models.CharField(max_length=1024, null=False, blank=True)
     description = models.TextField()
 
     class Meta:
@@ -120,27 +103,25 @@ class Education(models.Model):
 class Experience(models.Model):
     """ Applicant's Work or Volunteer Experience """
     resume = models.ForeignKey(Resume)
-    active = models.BooleanField(default=True, blank=False)
-    timestamp_created = models.DateTimeField(auto_now=False,  # Update now
-                                             auto_now_add=True  # When create
-                                             )
-    timestamp_updated = models.DateTimeField(auto_now=True,  # Update now
-                                             auto_now_add=False  # When create
-                                             )
-    company = models.CharField(max_length=255, null=False, blank=True)
+    company = models.CharField(max_length=512, null=False, blank=True)
+    location = models.CharField(max_length=255, null=False, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
+    current = models.BooleanField()  # Current at job
     title = models.CharField(max_length=255, null=False, blank=True)
-    location = models.CharField(max_length=255, null=False, blank=True)
     description = models.TextField()
-    quesiton_1 = models.TextField("What was your biggested accomplishment?")
-    question_2 = models.TextField("What was your average day like?")
-    question_3 = models.TextField("What do you need to do your job?")
-    question_4 = models.TextField("What do you like and dislike?")
-    question_5 = models.TextField("What advice do you have for others looking to get into this field?")
 
     class Meta:
         ordering = ['start_date']  # Automatically order by latest first
 
     def __unicode__(self):
-        return smart_unicode(self.start_date)  # Return identifer
+        return smart_unicode(self.company)  # Return identifer
+
+
+class Describe(models.Model):
+    """ Describe your job """
+    quesiton_1 = models.TextField("What was your biggested accomplishment?")
+    question_2 = models.TextField("What was your average day like?")
+    question_3 = models.TextField("What do you need to do your job?")
+    question_4 = models.TextField("What do you like and dislike?")
+    question_5 = models.TextField("What advice do you have for others looking to get into this field?")

@@ -44,7 +44,6 @@ class Base(ListView):
         return Resume.objects.all()
 
 
-
 class Profile(LoggedInMixin, ListView):
     """ Show User Profile, list resumes """
     model = Resume
@@ -181,23 +180,25 @@ class ResumeFilter(django_filters.FilterSet):
 
 
 class EducationFilter(django_filters.FilterSet):
-    start_date = django_filters.DateFilter(name='start_date', lookup_type='gte')
+    start_date = django_filters.DateFilter(name='start_date',
+                                           lookup_type='gte')
     end_date = django_filters.DateFilter(name='end_date', lookup_type='lte')
 
     class Meta:
         model = Education
-        fields = ('school', 'start_date', 'end_date', 'major', 'degree',
-                  'description')
+        fields = ('school', 'location', 'start_date', 'end_date', 'current',
+                  'title', 'description')
 
 
 class ExperienceFilter(django_filters.FilterSet):
-    start_date = django_filters.DateFilter(name='start_date', lookup_type='gte')
+    start_date = django_filters.DateFilter(name='start_date',
+                                           lookup_type='gte')
     end_date = django_filters.DateFilter(name='end_date', lookup_type='lte')
 
     class Meta:
         model = Experience
-        fields = ('company', 'start_date', 'end_date', 'title', 'location'
-                  )
+        fields = ('company', 'location', 'start_date', 'end_date', 'current',
+                  'title', 'description')
 
 
 # DRF VIEWSETS
