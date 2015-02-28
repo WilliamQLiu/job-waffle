@@ -9,3 +9,7 @@ class JobForm(forms.ModelForm):
         # Explicitly list only these fields:
         fields = ['company', 'location', 'title', 'description', 'status',
                   'salary_min', 'salary_max', 'picture']
+
+
+#class JobForm(forms.Form):
+#    company = forms.CharField(label='Company', max_length=512)

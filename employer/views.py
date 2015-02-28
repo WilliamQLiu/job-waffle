@@ -1,3 +1,9 @@
+"""
+    A view takes a web request and returns a web response
+    The response can be a web page, a redirect, a 404 error, etc
+"""
+
+
 from __future__ import absolute_import
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse

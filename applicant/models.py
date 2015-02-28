@@ -89,7 +89,7 @@ class Education(models.Model):
     location = models.CharField(max_length=512, null=False, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
-    current = models.BooleanField()  # Currently in school
+    current = models.BooleanField(default=False, blank=False)
     title = models.CharField(max_length=1024, null=False, blank=True)
     description = models.TextField()
 
@@ -107,7 +107,7 @@ class Experience(models.Model):
     location = models.CharField(max_length=255, null=False, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
-    current = models.BooleanField()  # Current at job
+    current = models.BooleanField(default=False, blank=False)  # Current at job
     title = models.CharField(max_length=255, null=False, blank=True)
     description = models.TextField()
 
