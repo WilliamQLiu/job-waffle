@@ -65,7 +65,7 @@ before_script:
 
 script:
   #- python manage.py test functional_tests --settings=jobwaffle.settings.dev_will
-  - coverage run manage.py test --settings=jobwaffle.settings.dev_will
+  - coverage run --source=applicant,employer manage.py test --settings=jobwaffle.settings.dev_will
 
 after_success:
   - coveralls

@@ -67,6 +67,7 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 * Run only functional tests using: $`python manage.py test functional_tests --setting=jobwaffle.settings.dev_will`
 * Run only unit tests using: $`coverage run manage.py test --settings=jobwaffle.settings.dev_will`
 * Run both functional and unit tests using: $`python manage.py test --settings=jobwaffle.settings.dev_will`
+* Get a coverage report using: $`coverage report`
 * You can specify to see all the tests with `-v 2` (verbose output) and `-v 3` (very verbose output)
 
 
