@@ -127,22 +127,6 @@
                   </div>
                 </th>
 
-                <th class="col-sm-1 job-bar-filter">
-                  <div class="dropdown col-">
-                    <a href="#" class="dropdown-toggle job-bar-filter" data-toggle="dropdown">job type
-                      <span class="caret"></span>
-                    </a>
-                  <ul class="dropdown-menu" role="menu">
-                    <form class="form-group">
-                      <div>
-                        <input type="text" placeholder="Enter keywords">
-                        <span class="glyphicon glyphicon-search"></span>
-                      </div>
-                    </form>
-                  </ul>
-                  </div>
-                </th>
-
             </tr>
         </thead>
 
@@ -169,10 +153,6 @@
             </td>
             <td>
               <p><strong>${% load humanize %}{{ job.salary_min|intcomma }}</strong></p>
-            </td>
-            <td>
-              <p><strong>{{ job.occupation }}</strong></p>
-              <p></p>
             </td>
           </tr>
 

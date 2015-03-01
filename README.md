@@ -42,8 +42,8 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 
 **Launch Django Server**
 
-*  Get static files: $`python manage.py collecstatic`
-*  Sync the database: $`python manage.py migrate`
+*  Get static files: $`python manage.py collecstatic --setting=jobwaffle.settings.dev_will`
+*  Sync the database: $`python manage.py migrate --setting=jobwaffle.settings.dev_will`
 *  Launch dev server: $`python manage.py runserver --setting=jobwaffle.settings.dev_will`
 
 
@@ -64,16 +64,16 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 
 **Testing**
 
-* Run only functional tests using: $`python manage.py test functional_tests`
+* Run only functional tests using: $`python manage.py test functional_tests --setting=jobwaffle.settings.dev_will`
 * Run only unit tests using: $`coverage run manage.py test --settings=jobwaffle.settings.dev_will`
 * Run both functional and unit tests using: $`python manage.py test --settings=jobwaffle.settings.dev_will`
+* You can specify to see all the tests with `-v 2` (verbose output) and `-v 3` (very verbose output)
 
 
 **Travis-CI**
 
 *  `.travis.yml` file is for continuous integration settings.  The idea is that each build is checked in and verified by an automated build to detect problems early.  
 *  Builds shown [here](https://travis-ci.org/WilliamQLiu/job-waffle)
-*  TODO: Add test cases :\
 
 
 **Coveralls**

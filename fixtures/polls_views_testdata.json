@@ -1,0 +1,29 @@
+[
+{
+    "fields": {
+        "timestamp_created": "2015-02-25T23:13:30.038Z",
+        "phone_number": "111111111",
+        "name": "Test",
+        "accomplishment": "Testing Testing Testing",
+        "location": "New York, NY",
+        "active": true,
+        "timestamp_updated": "2015-02-25T23:13:30.038Z",
+        "user": 1
+    },
+    "model": "applicant.resume",
+    "pk": 1
+},
+{
+    "fields": {
+        "timestamp_created": "2015-02-25T23:13:47.052Z",
+        "phone_number": "222222222",
+        "name": "Another Resume",
+        "accomplishment": "Testing again",
+        "location": "New York, NY",
+        "active": true,
+        "timestamp_updated": "2015-02-25T23:13:47.052Z",
+        "user": 1
+    },
+    "model": "applicant.resume",
+    "pk": 2
+}

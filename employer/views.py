@@ -1,6 +1,10 @@
 """
     A view takes a web request and returns a web response
     The response can be a web page, a redirect, a 404 error, etc
+
+    Under the hood, Django just converts HTTP POST and GET objects into a
+    'QueryDict', which is a Django dict, which is a Python dict
+
 """
 
 
@@ -10,22 +14,66 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, render_to_response, RequestContext, Http404
 from django.utils.decorators import method_decorator # Allow LoggedInMixin
 from django.views.generic import TemplateView, View, ListView, UpdateView, DeleteView, CreateView
+from django.http import HttpResponse, HttpResponseRedirect
+from django.utils import timezone
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 import django_filters
+
+# For debugging
+from django.http.request import QueryDict
+from django.utils.datastructures import MultiValueDict
+import logging
 
 from .models import Job
 from .forms import JobForm
 from .serializers import JobSerializer
-
 from rest_framework import viewsets, authentication, permissions, filters
 
 
-'''def home(request):
-    """ Just a blank homepage """
-    return render_to_response("base.html",
-                              locals(),
-                              context_instance=RequestContext(request)
-                              )
-'''
+# Debugging: Log levels (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+logger = logging.getLogger(__name__)  # get instance of a logger
+
+
+def find_job(request):
+    """ 'Find Job' Page """
+    my_data = Job.objects.filter(active=True).order_by('timestamp_created')
+    context = {'my_data': my_data}
+    return render(request, 'job_all.html', context)
+
+
+def post_job(request):
+    """ 'Post Job' Page """
+    if request.method == 'POST':
+        form = JobForm(data=request.POST)  # create form, populate data from request
+        if form.is_valid():
+
+            #Return authenticated user, if any
+            #username = None
+            #if request.user.is_authenticated():
+            #    username = request.user.username
+
+            company = form.cleaned_data['company']
+            location = form.cleaned_data['location']
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            status = form.cleaned_data['status']
+            salary_min = form.cleaned_data['salary_min']
+            salary_max = form.cleaned_data['salary_max']
+
+            my_data = Job(created_by=request.user, company=company,
+                         location=location, timestamp_created=timezone.now(),
+                         title=title, description=description, status=status,
+                         salary_min=salary_min, salary_max=salary_max)
+
+            my_data.save()
+            messages.success(request, 'Thanks!')
+            return HttpResponseRedirect('/')
+    else:  # Request is a 'GET' instead of 'POST'
+        form = JobForm()  # get a blank form
+        logger.info("Not a POST")
+    return render(request, 'post_job.html', {'form': form})
 
 
 class JobSearchView(ListView):

@@ -36,10 +36,9 @@ else:
     # For complex templates, this exp prints incorrect fields for debugging
 
 
-#Postgresql
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Postgres
         'NAME': 'jobwaffle',
         'USER': '',
         'PASSWORD': '',
@@ -63,7 +62,7 @@ EMAIL_HOST_USER = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 EMAIL_PORT = EMAIL_PORT
 
-SITE_ID = 2  # For django-allauth, can't be 1
+SITE_ID = 2  # For django-allauth, can't be 1 (example.com)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -115,6 +114,27 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# Added Logging - https://docs.djangoproject.com/en/1.7/topics/logging/
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"

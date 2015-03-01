@@ -5,7 +5,7 @@
     have human readable code (as in telling a story)
 
     How to run only functional tests: python manage.py test functional_tests
-    How to run unit tests for applicant app only: python manage.py test applicant
+    How to run unit tests for myapp app only: python manage.py test myapp
     How to run functional and unit tests: python manage.py test
 
     What this does:
@@ -23,8 +23,6 @@ import time
 import pdb
 
 
-
-### Setup
 class NewVisitorTest(LiveServerTestCase):
     """ Does landing page load? """
 
@@ -35,10 +33,10 @@ class NewVisitorTest(LiveServerTestCase):
                 self.assertTrue(assertion())
                 return
             except Exception, e:
+                print "Exception", e
                 pass
             time.sleep(1)
             self.fail(msg)
-
 
     def setUp(self):
         """ setUp runs before each test, like a try in try/except """
@@ -46,65 +44,41 @@ class NewVisitorTest(LiveServerTestCase):
         self.browser.implicitly_wait(3)  # Wait for page to load or else error
 
     def tearDown(self):
-        """ tearDown runs after each test, even if there's an error during the test itself """
+        """ tearDown always runs after each test, even if error """
         self.browser.quit()
 
-    def test_see_main_page_elements(self, text="Jobwaffle", msg=None):
+    def test_see_main_page_elements_when_not_logged_in(self):
         """ Can see the main page elements like buttons, links """
+
         # Will needs to enter in some data; he opens up his browser
         self.browser.get('http://localhost:8000')  # Local Dev Env (Hard Coded)
-
-        #time.sleep(5)
-        #msg = msg or " waiting for text %s to appear" % text
-        #assertion = lambda: self.selenium.is_text_present(text)
-        #self.spin_assert(msg, assertion)
-
-        #self.browser.get('http://10.1.1.7')  # Ubuntu Server
+        #self.browser.get('http://www.jobwaffle.com')  # Ubuntu Server
         #self.browser.get(self.live_server_url)  # uses Django's server
 
-        # Will notices the page title
-        #self.assertIn('Jobwaffle', self.browser.title)
-        #assert 'Jobwaffle' in self.browser.title , "The Browser Title is " + self.browser.title
+        # Notice TITLE
+        assert 'Jobwaffle' in self.browser.title, "The Browser Title is " + \
+            self.browser.title
 
-    """
+        # Notice LOG IN / SIGN UP
+        login = self.browser.find_element_by_id('id_log_in')
+        self.assertEqual('Log In', login.text)
 
-        # Will notices the 'Home' text
-        home_nav_bar = self.browser.find_element_by_id('home')
-        #print type(sign_in_button)  #<class selenium.webdriver.remote.webelement.WebElement
-        #print sign_in_button.text
-        self.assertEqual(home_nav_bar.text, 'Home')
+        signup = self.browser.find_element_by_id('id_sign_up')
+        self.assertIn('Sign Up', signup.text)
 
-        # Will notices the 'Sign In' button
-        sign_in_button = self.browser.find_element_by_id('login')
-        #print type(sign_in_button)  #<class selenium.webdriver.remote.webelement.WebElement
-        #print sign_in_button.text
-        self.assertEqual(sign_in_button.text, 'Sign In')
+        # Notice SIDE BAR
+        findjob = self.browser.find_element_by_id('id_find_job')
+        self.assertIn('Find Job', findjob.text)
 
-        # Will notices the 'Register' button
-        register_button = self.browser.find_element_by_id('register')
-        #print type(sign_in_button)  #<class selenium.webdriver.remote.webelement.WebElement
-        #print sign_in_button.text
-        self.assertEqual(register_button.text, 'Register')
+        postjob = self.browser.find_element_by_id('id_post_job')
+        self.assertIn('Post Job', postjob.text)
 
-    """
+        createresume = self.browser.find_element_by_id('id_create_resume')
+        self.assertEqual('Create Resume', createresume.text)
 
-    """
-    def test_click_main_page_links(self):
-        ''' Can click through to the main page's links '''
-        # Click through all the buttons
-        home_nav_bar = self.browser.find_element_by_id('home')
-        self.browser.click(home_nav_bar)
-    """
-
-        # Will enters the registration information and sends an activation email
-
-        # Will confirms the activation email
-
-        # Will clicks on the 'Sign In' tab
-
-        # Will forgets his password 'Forgot'
-
-        # Will has an account and now signs in
+        # This only appears if user is authenticated
+        #managejobposts = self.browser.find_element_by_id('id_manage_job_posts')
+        #self.assertIn('Manage Job Posts', managejobposts.text)
 
 
 # How a Python script checks if it's been executed from the command

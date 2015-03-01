@@ -1,10 +1,16 @@
+"""
+    A view takes a web request and returns a web response
+    The response can be a web page, a redirect, a 404 error, etc
+"""
+
+
 from __future__ import absolute_import
-#from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
 # login_required decorator
 from django.contrib.auth.decorators import login_required
 #from django.core.paginator import Paginator
 from django.core.urlresolvers import reverse
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.utils.decorators import method_decorator  # Allow LoggedInMixin
 from django.views.generic import TemplateView, View, ListView, \
     UpdateView, DeleteView, CreateView, FormView
@@ -30,18 +36,9 @@ class LoggedInMixin(object):
     #max_paginate_by = 500
 
 
-class Base(ListView):
-    """ Show User Profile, list advice """
-    #model = Advice
-    template_name = "base.html"
-
-    def get_success_url(self):
-        return reverse('base')
-
-    def get_queryset(self):
-        """ Get just logged in user's data """
-        #return Advice.objects.filter(user_id=self.request.user)
-        return Resume.objects.all()
+def base_page(request):
+    """ Base Page for Web Site """
+    return render(request, 'base.html')
 
 
 class Profile(LoggedInMixin, ListView):

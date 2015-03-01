@@ -21,4 +21,4 @@ class JobSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Job
         fields = ('company', 'title', 'description', 'status',
-                  'occupation', 'salary_min', 'salary_max', 'location')
+                  'salary_min', 'salary_max', 'location')

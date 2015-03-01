@@ -17,19 +17,19 @@ from rest_framework import serializers
 class ResumeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Resume
-        fields = ('timestamp_updated', 'name', 'location')
+        fields = ('active', 'timestamp_updated', 'name', 'location',
+                  'phone_number', 'accomplishment')
 
 
 class EducationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Education
-        fields = ('school', 'start_date', 'end_date', 'major', 'degree',
-                  'description')
+        fields = ('school', 'location', 'start_date', 'end_date', 'current',
+                  'title', 'description')
 
 
 class ExperienceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Experience
-        fields = ('company', 'start_date', 'end_date', 'title', 'location',
-                  'question_1', 'question_2', 'question_3', 'question_4',
-                  'question_5')
+        fields = ('company', 'location', 'start_date', 'end_date', 'current',
+                  'title', 'description')

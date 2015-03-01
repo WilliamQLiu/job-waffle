@@ -120,6 +120,7 @@ class Experience(models.Model):
 
 class Describe(models.Model):
     """ Describe your job """
+    experience = models.ForeignKey(Experience)
     quesiton_1 = models.TextField("What was your biggested accomplishment?")
     question_2 = models.TextField("What was your average day like?")
     question_3 = models.TextField("What do you need to do your job?")

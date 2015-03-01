@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
+{% comment %}
+Multi line comment
+{% endcomment %}
+
+
+
+
 {% block content %}
 
-{% if object_list %}
-    <p>Job Listings</p>
+
+{% if my_data %}
+    <p>Job Listings</p>  {# List jobs found in search #}
 
     <div class="table-responsive">
     <table class="table" border="2">
@@ -14,12 +22,12 @@
                 <th>Salary</th>
             </tr>
         </thead>
-    {% for job in object_list %}
+    {% for job in my_data %}
         <tbody>
             <tr>
                 <td> {{ job.title }} </td>
                 <td> {{ job.description }} </td>
-                <td> {{ job.salary }} </td>
+                <td> {{ job.salary_min }} -  {{ job.salary_max }}</td>
             </tr>
         </tbody>
     {% endfor %}

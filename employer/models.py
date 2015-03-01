@@ -17,17 +17,11 @@ class Job(models.Model):
                                              auto_now_add=True  # When create
                                              )
     timestamp_updated = models.DateTimeField(auto_now=True,  # Update now
-                                             auto_now_add=False  # When create
+                                             auto_now_add=True  # When create
                                              )
     title = models.CharField(max_length=255, null=False, blank=True)
     description = models.TextField()  # Description about the job
-    JOB_CHOICES = (
-        ('Full Time', 'Full Time'),
-        ('Part Time', 'Part Time'),
-        ('Contract', 'Contract'),
-        ('Internship', 'Internship'),
-    )      # Types of jobs
-    status = models.CharField(max_length=10, choices=JOB_CHOICES)
+    status = models.CharField(max_length=10)
     salary_min = models.IntegerField(null=False, blank=True)
     salary_max = models.IntegerField(null=False, blank=True)
 

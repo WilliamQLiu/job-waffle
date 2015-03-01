@@ -5,10 +5,11 @@ from django.contrib import admin
 from rest_framework import routers
 
 
-from applicant.views import Base, ResumeCreateView, ResumeListView, \
+from applicant.views import base_page, ResumeCreateView, ResumeListView, \
     ResumeUpdateView, ResumeDeleteView, Profile
 from employer.views import JobCreateView, JobListView, \
     JobSearchView, JobPostView, JobUpdateView, JobDeleteView
+from employer.views import find_job, post_job
 
 from applicant.views import ResumeViewSet, EducationViewSet, ExperienceViewSet
 from employer.views import JobViewSet
@@ -27,7 +28,7 @@ urlpatterns = patterns('',
     # Examples:
     #url(r'^$', 'jobwaffle.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r"^$", Base.as_view(), name="base"),  # Home Page
+    url(r"^$", base_page, name="base"),  # Home Page
 
     ###### SOCIAL REGISTRATION with django-allauth
     # prevent extra are you sure logout step
@@ -56,13 +57,17 @@ urlpatterns = patterns('',
 
     ###### JOBS
 
-    url(r"^jobsearch$", JobSearchView.as_view(), name="job-search"),  # Home Page
+    url(r"^find_job$", find_job, name="find_job"),  # Home Page
+    #url(r"^jobsearch$", JobSearchView.as_view(), name="job-search"),
+
+
 
     # All Job Listing Page
     url(r"^job_all$", JobListView.as_view(), name="job-all"),
 
     # Create Job post
-    url(r"^job_create$", JobCreateView.as_view(), name="job-create"),
+    url(r"^post_job$", post_job, name="post_job"),  # Home Page
+    url(r"^job_create$", JobCreateView.as_view(), name="job-create"),  # Remove this class later
 
     # List all your job posts
     url(r'^job_post$', JobPostView.as_view(), name='job-post'),

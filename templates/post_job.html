@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Post Job</h4>
+  <hr class="featurette-divider">
+
+    {% if form.subject.errors %}
+            <ol>
+            {% for error in form.subject.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+            </ol>
+    {% endif %}
+
+
+    <form method='POST' action='post_job' enctype='multipart/form-data'>
+        {% csrf_token %}
+
+        <div>
+            <p><label for="id_company">Company</label>
+                {{ form.company }}</p>
+            <p><label for="id_location">Location</label>
+                {{ form.location }}</p>
+            <p><label for="id_title">Job Title</label>
+                {{ form.title }}</p>
+            <p><label for="id_description">Job Description</label>
+                {{ form.description }}</p>
+            <p><label for="id_status">Status</label>
+                {{ form.status }}</p>
+            <p><label for="id_salary_min">Salary (min)</label>
+                {{ form.salary_min }}</p>
+            <p><label for="id_salary_max">Salary (max)</label>
+                {{ form.salary_max }}</p>
+            <p><label for="id_picture">Picture</label>
+                {{ form.picture }}</p>
+        </div>
+        <br>
+
+        <input type="submit" value="Submit" class="btn btn-lg btn-danger">
+    </form>
+{% endblock %}
