@@ -1,8 +1,4 @@
-JobWaffle  
-
-[![Build Status](https://travis-ci.org/WilliamQLiu/job-waffle.svg?branch=master)](https://travis-ci.org/WilliamQLiu/job-waffle)
-
-[![Coverage Status](https://coveralls.io/repos/WilliamQLiu/job-waffle/badge.svg?branch=master)](https://coveralls.io/r/WilliamQLiu/job-waffle?branch=master)
+JobWaffle  [![Build Status](https://travis-ci.org/WilliamQLiu/job-waffle.svg?branch=master)](https://travis-ci.org/WilliamQLiu/job-waffle)  [![Coverage Status](https://coveralls.io/repos/WilliamQLiu/job-waffle/badge.svg?branch=master)](https://coveralls.io/r/WilliamQLiu/job-waffle?branch=master)
 ======
 
 **Goal**

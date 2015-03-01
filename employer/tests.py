@@ -50,7 +50,6 @@ class JobPageTest(TestCase):
     def test_find_job_page_returns_correct_html(self):
         request = HttpRequest()  # What Django sees when browser asks for page
         response = find_job(request)  # pass request to view and get response
-
         expected_html = render_to_string('find_job.html')
         self.assertEqual(response.content.decode(), expected_html)
 
@@ -61,6 +60,13 @@ class JobPageTest(TestCase):
     def test_manage_job_posts_page_resolves_to_correct_view(self):
         found = resolve('/manage_job_posts')
         self.assertEqual(found.func, manage_job_posts)
+
+    def test_manage_job_posts_page_returns_correct_html(self):
+        request = HttpRequest()
+        response = manage_job_posts(request)
+        expected_html = render_to_string('manage_job_posts.html')
+        self.assertEqual(response.content.decode(), expected_html)
+
 
 
 if __name__ == '__main__':

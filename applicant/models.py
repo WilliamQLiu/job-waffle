@@ -68,8 +68,8 @@ class Resume(models.Model):
     timestamp_updated = models.DateTimeField(auto_now=True,  # Update now
                                              auto_now_add=False  # When create
                                              )
-    name = models.CharField(max_length=255, null=False, blank=True)
-    location = models.CharField(max_length=255, null=False, blank=True)
+    name = models.CharField(max_length=512, null=False, blank=True)
+    location = models.CharField(max_length=512, null=False, blank=True)
     phone_number = models.CharField(max_length=11, null=False, blank=True)
     accomplishment = models.TextField()
 

@@ -59,9 +59,6 @@ urlpatterns = patterns('',
 
     url(r"^find_job$", find_job, name="find_job"),  # Home Page
 
-    # Job Listing Page
-    url(r"^job_all$", JobListView.as_view(), name="job-all"),
-
     # Create Job post
     url(r"^post_job$", post_job, name="post_job"),  # Home Page
     #url(r"^job_create$", JobCreateView.as_view(), name="job-create"),  # Remove this class later

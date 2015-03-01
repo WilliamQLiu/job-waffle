@@ -18,7 +18,7 @@
               <tr>
                 <td>
                 <div>
-                    <p class="col-sm-11">Job: <strong>{{ job.title }}</strong> at <strong>{{ job.company }} </strong></p>
+                    <p class="col-sm-11"><strong>{{ job.title }}</strong> at <strong>{{ job.company }} </strong></p>
                     <a href="job/list/{{ job.id }}">
                         <span class="glyphicon glyphicon-search"></span></a>
                     <a href="job/update/{{ job.id }}">
@@ -28,8 +28,8 @@
                 </div>
                 <div>
                     <p class="col-sm-12">(Updated: {% load humanize %}{{ job.timestamp_updated|naturaltime }})</p>
-                    <p class="col-sm-12">Job Status: {{ job.status }}</p>
-                    <p class="col-sm-12">Job Description: {{ job.description }}</p>
+                    <p class="col-sm-12">{{ job.status }}</p>
+                    <p class="col-sm-12">Description: {{ job.description }}</p>
                 </div>
 
                 </td>

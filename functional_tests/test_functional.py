@@ -47,7 +47,7 @@ class NewVisitorTest(LiveServerTestCase):
         """ tearDown always runs after each test, even if error """
         self.browser.quit()
 
-    def test_see_main_page_elements_when_not_logged_in(self):
+    def test_see_sidebar_elements_when_not_logged_in(self):
         """ Can see the main page elements like buttons, links """
 
         # Will needs to enter in some data; he opens up his browser

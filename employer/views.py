@@ -90,42 +90,6 @@ def manage_job_posts(request):
     return render(request, 'manage_job_posts.html', context)
 
 
-
-'''
-class JobPostView(LoggedInMixin, ListView):
-    model = Job
-    template_name = 'job_posting.html'
-
-    def get_success_url():
-        #name = self.request.user.username
-        #return reverse('job-post', args=[name])
-        return('job-post')
-
-    def get_queryset(self):
-        """ Get your job postings """
-        return Job.objects.filter(created_by_id=self.request.user)
-'''
-
-
-class JobAllView(LoggedInMixin, ListView):
-    """ List all Jobs """
-    model = Job
-    template_name = "job_all.html"
-
-    def get_success_url(self):
-        return reverse('job-all')
-
-    def get_queryset(self):
-        return Job.objects.all()
-
-    '''
-    def form_valid(self, form):
-        job_image = Job(
-            image = self.get_form_kwargs().get('files')['image'])
-        job_image.save()
-        self.id = job_image.id'''
-
-
 class JobCreateView(LoggedInMixin, CreateView):
     """ Allow Users to Create Jobs """
     model = Job
@@ -152,9 +116,7 @@ class JobUpdateView(LoggedInMixin, UpdateView):
 
     def get_success_url(self):
         """ After updating a job, takes you back to job profile """
-        #name = self.request.user.username
-        #return reverse('job-all', args=[name])
-        return reverse('job-post')
+        return reverse('manage_job_posts')
 
     def get_queryset(self):
         specific_id = self.kwargs['pk']  # Pass variable 'pk' from urls.py
@@ -181,7 +143,7 @@ class JobDeleteView(LoggedInMixin, DeleteView):
 
     def get_success_url(self):
         """ After deleting a job, takes you back to profile """
-        return reverse('job-post')
+        return reverse('manage_job_posts')
 
     def get_queryset(self):
         specific_id = self.kwargs['pk']  # Pass variable 'pk' from urls.py
