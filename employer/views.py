@@ -40,7 +40,7 @@ def find_job(request):
     """ 'Find Job' Page """
     my_data = Job.objects.filter(active=True).order_by('timestamp_created')
     context = {'my_data': my_data}
-    return render(request, 'job_all.html', context)
+    return render(request, 'find_job.html', context)
 
 
 def post_job(request):
@@ -72,7 +72,7 @@ def post_job(request):
             return HttpResponseRedirect('/')
     else:  # Request is a 'GET' instead of 'POST'
         form = JobForm()  # get a blank form
-        logger.info("Not a POST")
+        #logger.info("Not a POST")
     return render(request, 'post_job.html', {'form': form})
 
 

@@ -28,7 +28,6 @@ from django.db import models
 from django.test import TestCase, RequestFactory
 
 from applicant.views import base_page
-from employer.views import find_job, post_job
 
 
 # Blank Page - url(r'^$'')
@@ -65,28 +64,6 @@ class MainPageTest(TestCase):
         # Decode helps us convert reponse's content bytes to unicode strings
         #print repr(response.content.decode()) # Print response for debugging
         #time.sleep(10)
-
-    def test_find_job_page_resolves_to_correct_view(self):
-        found = resolve('/find_job')
-        self.assertEqual(found.func, find_job)
-
-    def test_find_job_page_returns_correct_html(self):
-        request = HttpRequest()  # What Django sees when browser asks for page
-        response = find_job(request)  # pass request to view and get response
-
-        expected_html = render_to_string('find_job.html')
-        self.assertEqual(response.content.decode(), expected_html)
-
-    def test_post_job_page_resolves_to_correct_view(self):
-        found = resolve('/post_job')
-        self.assertEqual(found.func, post_job)
-
-    def test_post_job_page_returns_correct_html(self):
-        request = HttpRequest()  # What Django sees when browser asks for page
-        response = post_job(request)  # pass request to view and get response
-
-        expected_html = render_to_string('post_job.html')
-        self.assertEqual(response.content.decode(), expected_html)
 
 
 if __name__ == '__main__':

@@ -7,7 +7,7 @@ from rest_framework import routers
 
 from applicant.views import base_page, ResumeCreateView, ResumeListView, \
     ResumeUpdateView, ResumeDeleteView, Profile
-from employer.views import JobCreateView, JobListView, \
+from employer.views import JobListView, \
     JobSearchView, JobPostView, JobUpdateView, JobDeleteView
 from employer.views import find_job, post_job
 
@@ -67,7 +67,7 @@ urlpatterns = patterns('',
 
     # Create Job post
     url(r"^post_job$", post_job, name="post_job"),  # Home Page
-    url(r"^job_create$", JobCreateView.as_view(), name="job-create"),  # Remove this class later
+    #url(r"^job_create$", JobCreateView.as_view(), name="job-create"),  # Remove this class later
 
     # List all your job posts
     url(r'^job_post$', JobPostView.as_view(), name='job-post'),

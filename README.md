@@ -42,7 +42,7 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 
 **Launch Django Server**
 
-*  Get static files: $`python manage.py collecstatic --setting=jobwaffle.settings.dev_will`
+*  Get static files: $`python manage.py collectstatic --setting=jobwaffle.settings.dev_will`
 *  Sync the database: $`python manage.py migrate --setting=jobwaffle.settings.dev_will`
 *  Launch dev server: $`python manage.py runserver --setting=jobwaffle.settings.dev_will`
 
