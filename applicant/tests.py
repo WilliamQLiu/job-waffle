@@ -49,6 +49,23 @@ class MainPageTest(TestCase):
             password='enterpassword')
         settings.SITE_ID = 1  # Setup for
 
+    # LOGIN
+
+    def test_account_signup_page_resolves_to_account_signup_page(self):
+        response = self.client.get('/accounts/signup/')
+        self.assertEqual(response.status_code, 200)  # account signup page
+
+    def test_account_password_reset_resolves_to_password_reset_page(self):
+        response = self.client.get('/accounts/password/reset/')
+        self.assertEqual(response.status_code, 200)
+
+    # Need Facebook App to work
+    #def test_account_login_page_resolves_to_account_login_page(self):
+    #    response = self.client.get('/accounts/login/')
+    #    self.assertEqual(response.status_code, 200)  # redirect, must log in
+
+    # BASE
+
     def test_base_url_resolves_to_correct_view(self):
         found = resolve('/')  # resolves this url to map with function in views
         self.assertEqual(found.func, base_page)  # Found the url and function
@@ -56,7 +73,6 @@ class MainPageTest(TestCase):
     def test_base_page_returns_correct_html(self):
         request = HttpRequest()  # What Django sees when browser asks for page
         response = base_page(request)  # pass request to view and get response
-
         # Get template's html, check that it's the correct response
         expected_html = render_to_string('base.html')
         self.assertEqual(response.content.decode(), expected_html)
@@ -64,6 +80,14 @@ class MainPageTest(TestCase):
         # Decode helps us convert reponse's content bytes to unicode strings
         #print repr(response.content.decode()) # Print response for debugging
         #time.sleep(10)
+
+    # RESUME
+
+    def test_create_resume_page_resolves_to_login_page(self):
+        response = self.client.get('/resume_create')
+        self.assertEqual(response.status_code, 302)  # redirect, must log in
+
+
 
 
 if __name__ == '__main__':
