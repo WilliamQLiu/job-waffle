@@ -2,24 +2,19 @@
 
 {% block content %}
 
-
-    <div>
-      <p>Job Postings: {{ user.first_name }} {{ user.last_name }}</p>
-    </div>
-
     <hr class="featurette-divider">
     <table class="table table-hover table-condensed" border="1">
         <thead class="navbar-default">
           <tr>
-          <th class="col-sm-1 job-bar-filter">job posts
+          <th class="col-sm-1 job-bar-filter">Manage Job Posts
           </th>
           </tr>
         </thead>
 
         <!--Body content-->
         <tbody>
-          {% if object_list %}
-            {% for job in object_list %}
+          {% if my_data %}
+            {% for job in my_data %}
               <tr>
                 <td>
                 <div>

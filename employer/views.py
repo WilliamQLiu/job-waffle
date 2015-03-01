@@ -36,6 +36,13 @@ from rest_framework import viewsets, authentication, permissions, filters
 logger = logging.getLogger(__name__)  # get instance of a logger
 
 
+class LoggedInMixin(object):
+    """ Mixin to ensure user is logged in """
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LoggedInMixin, self).dispatch(*args, **kwargs)
+
+
 def find_job(request):
     """ 'Find Job' Page """
     my_data = Job.objects.filter(active=True).order_by('timestamp_created')
@@ -76,26 +83,28 @@ def post_job(request):
     return render(request, 'post_job.html', {'form': form})
 
 
-class JobSearchView(ListView):
+def manage_job_posts(request):
+    """ 'Manage Job Posts' Page """
+    my_data = Job.objects.filter(active=True).order_by('timestamp_created')
+    context = {'my_data': my_data}
+    return render(request, 'manage_job_posts.html', context)
+
+
+
+'''
+class JobPostView(LoggedInMixin, ListView):
     model = Job
-    template_name = 'search.html'
+    template_name = 'job_posting.html'
 
-    def get_success_url(self):
-        return reverse('home')
-
-    def get_context_data(self, **kwargs):
-        context = super(JobSearchView, self).get_context_data(**kwargs)
-        return context
+    def get_success_url():
+        #name = self.request.user.username
+        #return reverse('job-post', args=[name])
+        return('job-post')
 
     def get_queryset(self):
-        return Job.objects.all()
-
-
-class LoggedInMixin(object):
-    """ Mixin to ensure user is logged in """
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(LoggedInMixin, self).dispatch(*args, **kwargs)
+        """ Get your job postings """
+        return Job.objects.filter(created_by_id=self.request.user)
+'''
 
 
 class JobAllView(LoggedInMixin, ListView):
@@ -134,20 +143,6 @@ class JobCreateView(LoggedInMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(JobCreateView, self).form_valid(form)
-
-
-class JobPostView(LoggedInMixin, ListView):
-    model = Job
-    template_name = 'job_posting.html'
-
-    def get_success_url():
-        #name = self.request.user.username
-        #return reverse('job-post', args=[name])
-        return('job-post')
-
-    def get_queryset(self):
-        """ Get your job postings """
-        return Job.objects.filter(created_by_id=self.request.user)
 
 
 class JobUpdateView(LoggedInMixin, UpdateView):

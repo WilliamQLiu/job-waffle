@@ -69,7 +69,7 @@
             <li><a id="id_find_job" class="sidebar" href="/find_job">Find Job</a></li>
             <li><a id="id_post_job" class="sidebar" href="{% url 'post_job' %}">Post Job</a></li>
             {% if user.is_authenticated %}
-              <li><a id="id_manage_job_posts" class="sidebar" href="{% url 'job-post' %}">Manage Job Posts</a></li>
+              <li><a id="id_manage_job_posts" class="sidebar" href="{% url 'manage_job_posts' %}">Manage Job Posts</a></li>
             {% else %}
             {% endif %}
             </ul>

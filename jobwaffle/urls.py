@@ -8,11 +8,11 @@ from rest_framework import routers
 from applicant.views import base_page, ResumeCreateView, ResumeListView, \
     ResumeUpdateView, ResumeDeleteView, Profile
 from employer.views import JobListView, \
-    JobSearchView, JobPostView, JobUpdateView, JobDeleteView
+    JobUpdateView, JobDeleteView
 from employer.views import find_job, post_job
 
 from applicant.views import ResumeViewSet, EducationViewSet, ExperienceViewSet
-from employer.views import JobViewSet
+from employer.views import JobViewSet, manage_job_posts
 
 admin.autodiscover()
 
@@ -58,11 +58,8 @@ urlpatterns = patterns('',
     ###### JOBS
 
     url(r"^find_job$", find_job, name="find_job"),  # Home Page
-    #url(r"^jobsearch$", JobSearchView.as_view(), name="job-search"),
 
-
-
-    # All Job Listing Page
+    # Job Listing Page
     url(r"^job_all$", JobListView.as_view(), name="job-all"),
 
     # Create Job post
@@ -70,7 +67,7 @@ urlpatterns = patterns('',
     #url(r"^job_create$", JobCreateView.as_view(), name="job-create"),  # Remove this class later
 
     # List all your job posts
-    url(r'^job_post$', JobPostView.as_view(), name='job-post'),
+    url(r'^manage_job_posts$', manage_job_posts, name='manage_job_posts'),
 
     # List Specific Job
     url(r'^job/list/(?P<pk>\d+)/$', JobListView.as_view(), name='job-list'),

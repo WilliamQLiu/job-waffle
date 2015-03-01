@@ -27,7 +27,7 @@ from django.template.loader import render_to_string
 from django.db import models
 from django.test import TestCase, RequestFactory
 
-from employer.views import find_job, post_job
+from employer.views import find_job, post_job, manage_job_posts
 
 
 # Blank Page - url(r'^$'')
@@ -58,6 +58,9 @@ class JobPageTest(TestCase):
         found = resolve('/post_job')
         self.assertEqual(found.func, post_job)
 
+    def test_manage_job_posts_page_resolves_to_correct_view(self):
+        found = resolve('/manage_job_posts')
+        self.assertEqual(found.func, manage_job_posts)
 
 
 if __name__ == '__main__':
