@@ -5,26 +5,28 @@
     <!-- Job Search -->
       <div class="starter-template">
         <div class="row center-block">
+
+        <form method="get" action="">
+
           <div class="col-sm-5">
-              <input type="text" class="form-control" name="role" placeholder="What (e.g. Data Analyst)"/>
+              <input type="text" class="form-control" name="query_what" placeholder="What (e.g. Data Analyst)"/>
               <span class="help-block">job title, company, keywords</span>
           </div>
           <div class="col-sm-5">
-              <input type="text" class="form-control" name="location" placeholder="Where (e.g. New York, NY)"/>
+              <input type="text" class="form-control" name="query_where" placeholder="Where (e.g. New York, NY)"/>
               <span class="help-block">city, state, or zip</span>
           </div>
           <div class="col-sm-2">
               <input class="btn btn-primary" type="submit" value="Search">
           </div>
         </div>  <!-- end row -->
+
+        </form>
+
       </div>  <!-- end starter-template -->
 
 
-  <!-- Table -->
-  <hr class="featurette-divider">
-
-
-  {% if my_data %}
+  {% if search_results %}
     <table class="table table-hover table-condensed" border="0">
         <thead class="navbar-default">
             <tr>
@@ -102,34 +104,28 @@
 
         <tbody>
 
-
-
-
-          {% for job in my_data %}
+          {% for search_result in search_results %}
 
           <tr>
             <td>
               <img class="media-object img-responsive"
                 src="{{ MEDIA_URL }}images/jobs/tumblr_office2.jpg" alt="...">
             </td>
-              <td class="media-heading"><strong>{{ job.title }}</strong> at <strong>{{ job.company }}</strong>
-              <p>{{ job.description }}</p>
+              <td class="media-heading"><strong>{{ search_result.title }}</strong> at <strong>{{ search_result.company }}</strong>
+              <p>{{ search_result.description }}</p>
             </td>
             <td>
-              <p><strong>{{job.location}}</strong></p>
+              <p><strong>{{search_result.location}}</strong></p>
             </td>
             <td>
-              <p><strong>{{job.status}}</strong></p>
+              <p><strong>{{search_result.status}}</strong></p>
             </td>
             <td>
-              <p><strong>${% load humanize %}{{ job.salary_min|intcomma }}</strong></p>
+              <p><strong>${% load humanize %}{{ search_result.salary_min|intcomma }} -
+              ${% load humanize %}{{ search_result.salary_max|intcomma }}</strong></p>
             </td>
           </tr>
-
-
-
         {% endfor %}
-
         {% else %}
         <p>No jobs matched search results</p>
         {% endif %}
@@ -139,5 +135,4 @@
     </table>
 
   </div> <!-- end container jobs -->
-
 {% endblock %}

@@ -99,3 +99,6 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'haystack',
     },
 }
+
+# Every change in models will launch the elasticsearch 'update_index'
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

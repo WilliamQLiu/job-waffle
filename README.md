@@ -1,11 +1,12 @@
 JobWaffle  [![Build Status](https://travis-ci.org/WilliamQLiu/job-waffle.svg?branch=master)](https://travis-ci.org/WilliamQLiu/job-waffle)  [![Coverage Status](https://coveralls.io/repos/WilliamQLiu/job-waffle/badge.svg?branch=master)](https://coveralls.io/r/WilliamQLiu/job-waffle?branch=master)
 ======
 
+![Prototype](https://github.com/WilliamQLiu/job-waffle/blob/master/docs/search.png "Prototype")
+
+
 **Goal**
 
 [Jobwaffle](https://www.jobwaffle.com) will help you find a job you're interested and passionate about.  Using machine learning, we'll match employees and employers.
-
-![Prototype](https://github.com/WilliamQLiu/job-waffle/blob/master/docs/search.png "Prototype")
 
 **Setup**
 

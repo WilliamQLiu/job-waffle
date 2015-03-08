@@ -1,3 +1,5 @@
 {{ object.title }}
 {{ object.company }}
 {{ object.description }}
+{{ object.status }}
+{{ object.location }}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Search</h2>
+    <h2>Hello this is the Test Search Page</h2>
 
     <form method="get" action=".">
         <table>
@@ -13,6 +13,10 @@
                 </td>
             </tr>
         </table>
+
+
+        {% comment "This is what appears after doing a search" %}
+        {% endcomment %}
 
         {% if query %}
             <h3>Results</h3>

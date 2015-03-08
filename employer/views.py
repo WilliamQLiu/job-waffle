@@ -2,8 +2,12 @@
     A view takes a web request and returns a web response
     The response can be a web page, a redirect, a 404 error, etc
 
+    GET is used for requests that do not affect the state of the system
+    POST is used for making changes in the database
+
     Under the hood, Django just converts HTTP POST and GET objects into a
     'QueryDict', which is a Django dict, which is a Python dict
+
 
 """
 
@@ -27,9 +31,11 @@ from django.utils.datastructures import MultiValueDict
 import logging
 
 from .models import Job
-from .forms import JobForm
+from .forms import JobForm, JobSearchForm
 from .serializers import JobSerializer
 from rest_framework import viewsets, authentication, permissions, filters
+from haystack.query import SearchQuerySet
+from haystack.inputs import AutoQuery, Exact, Clean, Raw
 
 
 # Debugging: Log levels (DEBUG, INFO, WARNING, ERROR, CRITICAL)
@@ -45,8 +51,31 @@ class LoggedInMixin(object):
 
 def find_job(request):
     """ 'Find Job' Page """
-    my_data = Job.objects.filter(active=True).order_by('timestamp_created')
-    context = {'my_data': my_data}
+
+    query_what = None
+    query_where = None
+
+    form = JobSearchForm(request.GET)  # <class 'employer.forms.JobSearchForm'>
+    form_search = form.search()  # Get Search Results from the form
+
+    # GET data from the form; make sure fields aren't non-empty values
+    # filter Haystack's SearchQuerySet, for details see:
+    # http://django-haystack.readthedocs.org/en/v2.3.1/searchqueryset_api.html
+    if ('query_what' in request.GET and request.GET['query_what']) or \
+       ('query_where' in request.GET and request.GET['query_where']):
+        query_what = request.GET['query_what']  # query for what field
+        query_where = request.GET['query_where']  # query for where field
+        myquery = query_what + " " +  query_where  # combine search queries
+        search_results = form_search.filter(content__contains=myquery)  # AND
+    else:
+        query_what = 'You submitted an empty form'
+        query_where = 'You submitted an empty form'
+        search_results = form_search
+
+    # If you want to filter by Model instead of by Haystack's SearchQuerySet
+    #my_data = Job.objects.filter(active=True).order_by('timestamp_created')
+
+    context = {'search_results': search_results}
     return render(request, 'find_job.html', context)
 
 

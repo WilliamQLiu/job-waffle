@@ -4,15 +4,15 @@ from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from rest_framework import routers
 
+from applicant.views import base_page, Profile, ResumeCreateView, \
+    ResumeListView, ResumeUpdateView, ResumeDeleteView, ResumeViewSet, \
+    EducationViewSet, ExperienceViewSet
+from employer.views import JobListView, JobUpdateView, JobDeleteView, \
+    find_job, post_job, JobViewSet, manage_job_posts
 
-from applicant.views import base_page, ResumeCreateView, ResumeListView, \
-    ResumeUpdateView, ResumeDeleteView, Profile
-from employer.views import JobListView, \
-    JobUpdateView, JobDeleteView
-from employer.views import find_job, post_job
-
-from applicant.views import ResumeViewSet, EducationViewSet, ExperienceViewSet
-from employer.views import JobViewSet, manage_job_posts
+from haystack.forms import ModelSearchForm
+from haystack.query import SearchQuerySet
+from haystack.views import SearchView, search_view_factory
 
 admin.autodiscover()
 
@@ -92,7 +92,6 @@ urlpatterns = patterns('',
 
     # Haystack for ElasticSearch, it's a URLconf point to 'SearchView' instance
     (r'^search/', include('haystack.urls')),
-
 
     url(r'^admin/', include(admin.site.urls)),
 )
