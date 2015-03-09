@@ -7,8 +7,10 @@
 """
 
 from __future__ import absolute_import  # Allow explicit relative imports
-
 from .base import *
+import os
+from urlparse import urlparse
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -22,7 +24,7 @@ DATABASES = {
          #Postgresql - On Ubuntu Server w/Postgresql - For Testing Only
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jobwaffle',
-        'USER': 'postgres',
+        'USER': '', #'postgres',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
@@ -93,10 +95,17 @@ INSTALLED_APPS = (
     #'allauth.socialaccount.providers.twitter',
 )
 
+es = urlparse(os.environ.get('SEARCHBOX_URL') or 'http://127.0.0.1:9200/')
+
+port = es.port or 80
+
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://127.0.0.1:9200/',
+        'URL': es.scheme + '://' + es.hostname + ':' + str(port),
         'INDEX_NAME': 'haystack',
     },
 }
+
+if es.username:
+    HAYSTACK_CONNECTIONS['default']['KWARGS'] = {"http_auth": es.username + ':' + es.password}

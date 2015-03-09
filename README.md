@@ -6,7 +6,7 @@ JobWaffle  [![Build Status](https://travis-ci.org/WilliamQLiu/job-waffle.svg?bra
 
 **Goal**
 
-[Jobwaffle](https://www.jobwaffle.com) will help you find a job you're interested and passionate about.  Using machine learning, we'll match employees and employers.
+Jobwaffle will help you find a job you're interested and passionate about.  Using machine learning, we'll match employees and employers.
 
 **Setup**
 
@@ -57,10 +57,12 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 
 **Launch on Heroku**
 
+Note: You need to add a 'settings.py' file for Heroku; I'm taking the site off Heroku and looking at other options (EC2, Digital Ocean, Linode)
 1. Login: $`heroku login`
 2. Create Heroku app: $`heroku create`
 3. Rename Heroku app: $`heroku rename jobwaffle`
 4. Push code to Heroku `git push heroku master`
+
 
 
 **Testing**
