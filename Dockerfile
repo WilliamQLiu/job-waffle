@@ -24,7 +24,7 @@ RUN (cd /opt/job-waffle && sudo git remote add origin https://github.com/William
 RUN (cd /opt/job-waffle && sudo git pull origin master)
 RUN (cd /opt/job-waffle && pip install -r requirements.txt)
 ADD . /opt/job-waffle/
-CMD ["python", "manage.py", "migrate", "--noinput"]
-CMD ["python", "manage.py", "collectstatic", "--noinput"]
+#CMD ["python", "manage.py", "migrate", "--noinput"]
+#CMD ["python", "manage.py", "collectstatic", "--noinput"]
 
 EXPOSE 8000

@@ -69,13 +69,16 @@ Note: You need to add a 'settings.py' file for Heroku; I'm taking the site off H
 
 Dockerfile is available on DockerHub [here](https://registry.hub.docker.com/u/williamqliu/job-waffle/dockerfile/)
 
-1.) Install Docker and Docker-Compose on your development machine
-2.) Use Docker-Compse to build the dev environment:  `docker-compose run web`
-3.) Then run `docker-compose up -d` to run your containers in daemonized mode
-4.) Then run `docker-compose run web python manage.py syncdb`
+1. Install Docker and Docker-Compose on your development machine
+2. Use Docker-Compse to build the dev environment:  `docker-compose run web`
+3. Then run `docker-compose up -d` to run your containers in daemonized mode
+4. Then run `docker-compose run web python manage.py syncdb`
+
 Other helpful options include:
 *  `docker run -t jobwaffle_web` to go into container
 *  `docker-compose stop` to stop your containers
+*  `docker-compose run web python manage.py migrate`
+*  `docker-compose run web python manage.py collectstatic`
 
 **Testing**
 
