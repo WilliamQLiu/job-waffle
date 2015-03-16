@@ -18,6 +18,7 @@ TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['www.jobwaffle.com', 'jobwaffle.com']
 
+
 DATABASES = {
     'default': {
 
@@ -31,7 +32,6 @@ DATABASES = {
 
     }
 }
-
 
 # AWS SETTINGS
 AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID

@@ -43,33 +43,40 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 
 **Launch Django Server**
 
-*  Get static files: $`python manage.py collectstatic --setting=jobwaffle.settings.dev_will`
-*  Sync the database: $`python manage.py migrate --setting=jobwaffle.settings.dev_will`
-*  Launch dev server: $`python manage.py runserver --setting=jobwaffle.settings.dev_will`
+*  Get static files: $`python manage.py collectstatic --setting=jobwaffle.mysettings.dev_will`
+*  Sync the database: $`python manage.py migrate --setting=jobwaffle.mysettings.dev_will`
+*  Launch dev server: $`python manage.py runserver --setting=jobwaffle.mysettings.dev_will`
 
 
 **Launch ElasticSearch**
 
 *  On local Mac, start ElasticSearch with: `elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml`
-*  To build your search index, do: `python manage.py rebuild_index --settings=jobwaffle.settings.dev_will`
-*  To rebuild your search index, do: `python manage.py update_index --settings=jobwaffle.settings.dev_will`
+*  To build your search index, do: `python manage.py rebuild_index --settings=jobwaffle.mysettings.dev_will`
+*  To rebuild your search index, do: `python manage.py update_index --settings=jobwaffle.mysettings.dev_will`
 
 
 **Launch on Heroku**
 
-Note: You need to add a 'settings.py' file for Heroku; I'm taking the site off Heroku and looking at other options (EC2, Digital Ocean, Linode)
-1. Login: $`heroku login`
+Note: You need to add a 'settings.py' file for Heroku; I'm taking the site off Heroku (even though the below instructions should work).  Instead, I'm using Docker with AWS.  See below on how to setup with Docker.
+~~1. Login: $`heroku login`
 2. Create Heroku app: $`heroku create`
 3. Rename Heroku app: $`heroku rename jobwaffle`
-4. Push code to Heroku `git push heroku master`
+4. Push code to Heroku `git push heroku master`~~
 
 
+**Docker**
+1.) Install Docker and Docker-Compose on your development machine
+2.) Use Docker-Compse to build the dev environment:  `docker-compose run web`
+3.) Then run `docker-compose up`
+4.) Then run `docker-compose run web python manage.py syncdb`
+Other helpful options include:
+*  `docker run -t jobwaffle_web` to go into container
 
 **Testing**
 
-* Run only functional tests using: $`python manage.py test functional_tests --setting=jobwaffle.settings.dev_will`
-* Run only unit tests using: $`coverage run manage.py test --settings=jobwaffle.settings.dev_will`
-* Run both functional and unit tests using: $`python manage.py test --settings=jobwaffle.settings.dev_will`
+* Run only functional tests using: $`python manage.py test functional_tests --setting=jobwaffle.mysettings.dev_will`
+* Run only unit tests using: $`coverage run manage.py test --settings=jobwaffle.mysettings.dev_will`
+* Run both functional and unit tests using: $`python manage.py test --settings=jobwaffle.mysettings.dev_will`
 * Get a coverage report using: $`coverage report`
 * You can specify to see all the tests with `-v 2` (verbose output) and `-v 3` (very verbose output)
 
