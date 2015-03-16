@@ -58,6 +58,7 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 **Launch on Heroku**
 
 Note: You need to add a 'settings.py' file for Heroku; I'm taking the site off Heroku (even though the below instructions should work).  Instead, I'm using Docker with AWS.  See below on how to setup with Docker.
+
 ~~1. Login: $`heroku login`
 2. Create Heroku app: $`heroku create`
 3. Rename Heroku app: $`heroku rename jobwaffle`
@@ -65,12 +66,16 @@ Note: You need to add a 'settings.py' file for Heroku; I'm taking the site off H
 
 
 **Docker**
+
+Dockerfile is available on DockerHub [here](https://registry.hub.docker.com/u/williamqliu/job-waffle/dockerfile/)
+
 1.) Install Docker and Docker-Compose on your development machine
 2.) Use Docker-Compse to build the dev environment:  `docker-compose run web`
-3.) Then run `docker-compose up`
+3.) Then run `docker-compose up -d` to run your containers in daemonized mode
 4.) Then run `docker-compose run web python manage.py syncdb`
 Other helpful options include:
 *  `docker run -t jobwaffle_web` to go into container
+*  `docker-compose stop` to stop your containers
 
 **Testing**
 

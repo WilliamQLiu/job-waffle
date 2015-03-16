@@ -17,10 +17,14 @@ RUN apt-get update && apt-get --yes --force-yes install \
 
 RUN easy_install pip
 
-RUN mkdir opt/job-waffle
+RUN mkdir /opt/job-waffle
+WORKDIR /opt/job-waffle
 RUN (cd /opt/job-waffle && sudo git init)
 RUN (cd /opt/job-waffle && sudo git remote add origin https://github.com/WilliamQLiu/job-waffle.git)
 RUN (cd /opt/job-waffle && sudo git pull origin master)
 RUN (cd /opt/job-waffle && pip install -r requirements.txt)
+ADD . /opt/job-waffle/
+CMD ["python", "manage.py", "migrate", "--noinput"]
+CMD ["python", "manage.py", "collectstatic", "--noinput"]
 
 EXPOSE 8000
