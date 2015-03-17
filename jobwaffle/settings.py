@@ -16,7 +16,7 @@ from __future__ import absolute_import  # Allow explicit relative imports
 import os
 import socket
 
-#import dj_database_url  # for heroku
+import dj_database_url  # for heroku
 from .secret import MY_SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, \
     EMAIL_USE_TLS, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, \
     EMAIL_PORT
@@ -50,7 +50,7 @@ DATABASES = {
 }
 '''
 
-
+# Settings for Docker
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -63,9 +63,9 @@ DATABASES = {
 }
 
 # For Heroku
-#DATABASE_URL='postgres://:@localhost/jobwaffle'
+DATABASE_URL='postgres://:@localhost/jobwaffle'
 #DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
-#DATABASES['default'] =  dj_database_url.config(default=DATABASE_URL)
+DATABASES['default'] =  dj_database_url.config(default=DATABASE_URL)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

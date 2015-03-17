@@ -59,10 +59,11 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 
 Note: You need to add a 'settings.py' file for Heroku; I'm taking the site off Heroku (even though the below instructions should work).  Instead, I'm using Docker with AWS.  See below on how to setup with Docker.
 
-~~1. Login: $`heroku login`
-2. Create Heroku app: $`heroku create`
-3. Rename Heroku app: $`heroku rename jobwaffle`
-4. Push code to Heroku `git push heroku master`~~
+1. Install Heroku Toolbelt on your dev machine
+2. Login: $`heroku login`
+3. Create Heroku app: $`heroku create`
+4. Rename Heroku app: $`heroku rename jobwaffle`
+5. Push code to Heroku `git push heroku master`~~
 
 
 **Docker**
