@@ -15,6 +15,7 @@ from __future__ import absolute_import  # Allow explicit relative imports
 
 import os
 import socket
+from urlparse import urlparse
 
 import dj_database_url  # for heroku
 from .secret import MY_SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, \
@@ -169,13 +170,13 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 #STATIC_ROOT = '/var/www/jobwaffle/static/'
 STATIC_ROOT = (
-    os.path.join(os.path.dirname(BASE_DIR), "static")
+    os.path.join(os.path.dirname(BASE_DIR), "job-waffle", "static")
     )
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(BASE_DIR), "job-waffle", "static"),
-    )
+#STATICFILES_DIRS = (
+#    os.path.join(os.path.dirname(BASE_DIR), "job-waffle", "static"),
+#    )
 
 
 # List of finder classes that know how to find static files in
@@ -285,4 +286,34 @@ HAYSTACK_CONNECTIONS = {
 
 # Every change in models will launch the elasticsearch 'update_index'
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+# AWS SETTINGS
+AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'  #django-storage
+#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'  #django-storage
+
+AWS_STORAGE_BUCKET_NAME = 'jobwaffle'
+AWS_PRELOAD_METADATA = True  # collectstatic to upload changed (instead of all)
+
+STATIC_URL = 'https://jobwaffle.s3.amazonaws.com/static/'
+ADMIN_MEDIA_PREFIX = 'https://jobwaffle.s3.amazonaws.com/static/admin/'
+MEDIA_URL = 'https://jobwaffle.s3.amazonaws.com/media/'
+
+
+es = urlparse(os.environ.get('SEARCHBOX_URL') or 'http://127.0.0.1:9200/')
+
+port = es.port or 80
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': es.scheme + '://' + es.hostname + ':' + str(port),
+        'INDEX_NAME': 'haystack',
+    },
+}
+
+if es.username:
+    HAYSTACK_CONNECTIONS['default']['KWARGS'] = {"http_auth": es.username + ':' + es.password}
 
