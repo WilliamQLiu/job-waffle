@@ -1,1 +1,1 @@
-web: gunicorn jobwaffle.wsgi --log-file --
+web: gunicorn jobwaffle.wsgi --log-file -
