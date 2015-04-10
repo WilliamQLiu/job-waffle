@@ -27,18 +27,61 @@ SECRET_KEY = MY_SECRET_KEY
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-ALLOWED_HOSTS = ['www.jobwaffle.com', 'jobwaffle.com']
+#DEBUG = True
+DEBUG = False
 
-if socket.gethostname() in (ALLOWED_HOSTS):  # 'www.jobwaffle.com'
-    DEBUG = False
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+#STATIC_ROOT = '/var/www/jobwaffle/static/'
+
+if DEBUG:
+    STATIC_ROOT = (
+        os.path.join(os.path.dirname(BASE_DIR), "job-waffle", "static")
+        )
+    STATIC_URL = '/static/'
+    ALLOWED_HOSTS = ['*']  # Make it work on local
+
+    # Absolute filesystem path to the directory that will hold user-uploaded files.
+    # Example: "/var/www/example.com/media/"
+
+    MEDIA_ROOT = (
+        os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), "media")
+        )
+
+    #STATICFILES_DIRS = (
+    #    os.path.join(os.path.dirname(BASE_DIR), "job-waffle", "static"),
+    #    )
+
+    # URL that handles the media served from MEDIA_ROOT. Make sure to use a
+    # trailing slash.
+    # Examples: "http://example.com/media/", "http://media.example.com/"
+    MEDIA_URL = '/media/'
+
 else:
-    DEBUG = True
-    TEMPLATE_STRING_IF_INVALID = "INVALID EXPERSSION: %s"
-    # For complex templates, this exp prints incorrect fields for debugging
+
+    # For Heroku
+    DATABASE_URL='postgres://:@localhost/jobwaffle'
+    DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+    #DATABASES['default'] =  dj_database_url.config(default=DATABASE_URL)
+
+    #ALLOWED_HOSTS = ['www.jobwaffle.com', 'jobwaffle.com']
+    ALLOWED_HOSTS = '*'
+    STATIC_URL = 'https://jobwaffle.s3.amazonaws.com/static/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'  #django-storage
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'  #django-storage
+
+    AWS_STORAGE_BUCKET_NAME = 'jobwaffle'
+    AWS_PRELOAD_METADATA = True  # collectstatic to upload changed (instead of all)
+
+    ADMIN_MEDIA_PREFIX = 'https://jobwaffle.s3.amazonaws.com/static/admin/'
+    MEDIA_URL = 'https://jobwaffle.s3.amazonaws.com/media/'
+
+
+
 
 
 # Settings for Local Dev
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Postgres
@@ -49,6 +92,7 @@ DATABASES = {
         'PORT': ''
     }
 }
+
 '''
 
 # Settings for Docker
@@ -62,15 +106,10 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-
-# For Heroku
-DATABASE_URL='postgres://:@localhost/jobwaffle'
-#DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
-DATABASES['default'] =  dj_database_url.config(default=DATABASE_URL)
+'''
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 
 # Email Settings from secret.py
 EMAIL_USE_TLS = EMAIL_USE_TLS
@@ -153,30 +192,7 @@ LOGGING = {
     },
 }
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/var/www/example.com/media/"
 
-MEDIA_ROOT = (
-    os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), "media")
-    )
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = '/media/'
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-#STATIC_ROOT = '/var/www/jobwaffle/static/'
-STATIC_ROOT = (
-    os.path.join(os.path.dirname(BASE_DIR), "job-waffle", "static")
-    )
-STATIC_URL = '/static/'
-
-#STATICFILES_DIRS = (
-#    os.path.join(os.path.dirname(BASE_DIR), "job-waffle", "static"),
-#    )
 
 
 # List of finder classes that know how to find static files in
@@ -276,13 +292,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "allauth.socialaccount.context_processors.socialaccount",
 )
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://127.0.0.1:9200/',
-        'INDEX_NAME': 'haystack',
-    },
-}
 
 # Every change in models will launch the elasticsearch 'update_index'
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
@@ -291,16 +300,6 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # AWS SETTINGS
 AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'  #django-storage
-#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'  #django-storage
-
-AWS_STORAGE_BUCKET_NAME = 'jobwaffle'
-AWS_PRELOAD_METADATA = True  # collectstatic to upload changed (instead of all)
-
-STATIC_URL = 'https://jobwaffle.s3.amazonaws.com/static/'
-ADMIN_MEDIA_PREFIX = 'https://jobwaffle.s3.amazonaws.com/static/admin/'
-MEDIA_URL = 'https://jobwaffle.s3.amazonaws.com/media/'
-
 
 es = urlparse(os.environ.get('SEARCHBOX_URL') or 'http://127.0.0.1:9200/')
 

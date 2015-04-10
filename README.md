@@ -6,11 +6,11 @@ JobWaffle  [![Build Status](https://travis-ci.org/WilliamQLiu/job-waffle.svg?bra
 
 **Goal**
 
-Jobwaffle will help you find a job you're interested and passionate about.  Using machine learning, we'll match employees and employers.
+Jobwaffle will help you find a job you're interested and passionate about.  Using a quantitative approach, we match employees with employers.
 
 **Setup**
 
-Jobwaffle is open source.  There's a lot of technical setup so stick with the installation steps below.  The site is currently hosted on a free heroku tier so it'll probably run really slow on live.
+Jobwaffle is open source.  There's a lot of technical setup so stick with the installation steps below.
 
 
 **secret.py**
@@ -59,11 +59,12 @@ Jobwaffle allows you to sign up using a social media account (e.g. Facebook, Goo
 
 Note: You need to add a 'settings.py' file for Heroku; I'm taking the site off Heroku (even though the below instructions should work).  Instead, I'm using Docker with AWS.  See below on how to setup with Docker.
 
-1. Install Heroku Toolbelt on your dev machine
+1. Install Heroku Toolbelt on your dev machine (setup by adding ssh keys and )
 2. Login: $`heroku login`
 3. Create Heroku app: $`heroku create`
 4. Rename Heroku app: $`heroku rename jobwaffle`
 5. Push code to Heroku `git push heroku master`~~
+6. Start the processes in your Procfile with `foreman start`
 
 
 **Docker**

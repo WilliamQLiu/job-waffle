@@ -25,23 +25,10 @@ from .base import *
 DEBUG = True
 TEMPLATE_DEBUG = True
 
+TEMPLATE_STRING_IF_INVALID = "INVALID EXPERSSION: %s"
+# For complex templates, this exp prints incorrect fields for debugging
+
 #ALLOWED_HOSTS = ['www.jobwaffle.com', 'jobwaffle.com']
-
-'''
-DATABASES = {
-    'default': {
-
-        #Postgresql
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jobwaffle',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-
-    }
-}
-'''
 
 # Application definition
 INSTALLED_APPS = (

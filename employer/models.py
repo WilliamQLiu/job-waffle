@@ -13,11 +13,13 @@ class Job(models.Model):
     created_by = models.ForeignKey(User)
     company = models.CharField(max_length=512, null=False, blank=True)
     location = models.CharField(max_length=255, null=False, blank=True)
-    timestamp_created = models.DateTimeField(auto_now=False,  # Update now
-                                             auto_now_add=True  # When create
+    timestamp_created = models.DateTimeField(
+                                             auto_now_add=True,  # On Create
+                                             editable=False
                                              )
-    timestamp_updated = models.DateTimeField(auto_now=True,  # Update now
-                                             auto_now_add=True  # When create
+    timestamp_updated = models.DateTimeField(
+                                             auto_now=True,  # On Update
+                                             editable=False
                                              )
     title = models.CharField(max_length=255, null=False, blank=True)
     description = models.TextField()  # Description about the job

@@ -90,3 +90,5 @@ jobwaffle.sublime-workspace
 *.sublime-workspace
 
 *.sublime-project
+
+jobwaffle/secret.py

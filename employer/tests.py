@@ -41,7 +41,9 @@ class JobPageTest(TestCase):
         self.user = User.objects.create_user(
             username='will', email='williamqliu@gmail.com',
             password='enterpassword')
-        settings.SITE_ID = 1  # Setup for
+        settings.SITE_ID = 1  # Setup
+
+
 
     def test_find_job_page_resolves_to_correct_view(self):
         found = resolve('/find_job')
