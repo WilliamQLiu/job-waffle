@@ -39,7 +39,7 @@ python-openid==2.2.5
 PyYAML==3.11
 requests==2.4.3
 requests-oauthlib==0.4.2
-rsa==3.1.4
+rsa==4.1
 selenium==2.44.0
 six==1.9.0
 sqlparse==0.1.14
